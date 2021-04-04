@@ -9,3 +9,6 @@
  
  WARMING: It is not official published by ARTX.
 
+
+ 1 % of reward would reserve for Devs
+

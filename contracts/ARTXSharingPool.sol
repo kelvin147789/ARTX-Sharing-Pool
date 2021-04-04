@@ -39,8 +39,8 @@ contract ARTXSharingPool {
   mapping(address => mapping (address => uint256)) allowed;
   mapping(address => UserInfo) public userInfo;
   uint256 public rewardAmount;
-  
 
+  
 
   struct UserInfo {
     address userAddress;
@@ -56,8 +56,20 @@ contract ARTXSharingPool {
 
 
   constructor (ERC20 _token) public {
+    
     artx = ERC20(_token);
   } 
+
+
+  receive() external payable {
+    // Thank you for your support
+  }
+
+  function devDonateithdraw(uint256 _amount) public {
+    require(msg.sender == owner, "only dev can get donation");
+    msg.sender.transfer(_amount);
+
+  }
 
 
   function returnTotalRewardAmount() public view returns (uint256) {
