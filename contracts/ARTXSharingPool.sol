@@ -68,7 +68,7 @@ contract ARTXSharingPool {
   }
 
   function devDonateithdraw(uint256 _amount) public {
-    // Disclaimer: this function only to withdraw ETH in the contract, NOT ARTX.Your fund is SAFE
+    // Disclaimer: this function only to withdraw ETH in the contract, NOT ARTX.Your ARTX is SAFE
     require(msg.sender == owner, "only dev can get donation");
     msg.sender.transfer(_amount);
 
