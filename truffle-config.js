@@ -1,3 +1,8 @@
+require("dotenv").config();
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+const { EAPI_URL, PRIVATE_KEY } = process.env;
+const { API_URL, EPRIVARTE_KEY } = process.env;
+
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -25,6 +30,8 @@
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 module.exports = {
+
+  contracts_build_directory: "./src/abi",
   /**
    * Networks define how you connect to your ethereum client and let you set the
    * defaults web3 uses to send transactions. If you don't specify one truffle
@@ -36,6 +43,16 @@ module.exports = {
    */
 
   networks: {
+
+
+
+    bsctest: {
+      provider: () => {
+        return new HDWalletProvider(PRIVATE_KEY, API_URL)
+      },
+      network_id: "97",
+      gas: 10000000
+    },
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal
@@ -82,7 +99,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.6.12",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {
