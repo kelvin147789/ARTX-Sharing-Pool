@@ -5,9 +5,21 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 
 
 
+
 contract ARTXSharingPool {
 
-  // TODO: function to check the balance of ARTX in this address  , which would be sub totalDepositAmount;
+
+
+  /* 
+
+  TODO: 
+  - function to check the balance of ARTX in this address  , which would be sub totalDepositAmount;
+  - Mock ARTX token for testing function
+  - Deploy in Testnet
+
+  
+  
+  */
 
  using SafeMath for uint256;
 
