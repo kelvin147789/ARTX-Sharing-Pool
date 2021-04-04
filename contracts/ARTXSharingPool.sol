@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 
 
 
+
 contract ARTXSharingPool {
 
 
@@ -13,7 +14,11 @@ contract ARTXSharingPool {
   /* 
 
   TODO: 
+  - call function from deploted contract basic testing
+    - https://trello.com/c/SxcVO0bS/208-calling-function-from-deployed-contract
+    
   - function to check the balance of ARTX in this address  , which would be sub totalDepositAmount;
+  https://etherscan.io/address/0x741b0428efdf4372a8df6fb54b018db5e5ab7710#code ARTXToken 
   - Mock ARTX token for testing function
   - Deploy in Testnet
 
