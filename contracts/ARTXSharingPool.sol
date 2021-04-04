@@ -71,6 +71,12 @@ contract ARTXSharingPool {
     // Disclaimer: this function only to withdraw ETH donation in the contract, NOT ARTX.Your ARTX is SAFE
     require(msg.sender == owner, "only dev can get donation");
     msg.sender.transfer(_amount);
+  }
+
+
+  function changeOwnership(address _newDev) public {
+    require(msg.sender ==owner, "only dev can change owner");
+    owner = _newDev;
 
   }
 
