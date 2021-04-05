@@ -13,7 +13,7 @@
   It is an open source project , use at your own risk.
 
 
-* To support Dev , send any amount of ETH to the Sharing Pool Contract, thank you !
+* To support Dev , send any amount of ETH to this Sharing Pool Contract, thank you !
 > 0x21213232323...
 
 * Only use  Contract above , **DON'T** use other contract to avoid bad action 
