@@ -1,5 +1,8 @@
 # Getting Started with ARTX Sharing Pool
 
+
+  DON't USE it NOW, It is still Testing !!! 
+
   This project is designed to used for small ARTX holder to participate in share which suppose to require 10K.
   
   Contract Address:
