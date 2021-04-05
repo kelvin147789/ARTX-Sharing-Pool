@@ -11,21 +11,13 @@
 
 
 
-* To support Dev , send any amount of ETH to this Sharing Pool Contract, thank you !
+* To support Dev , send any amount of ETH to this Sharing Pool Contract, thank you 🦄 !
 > 0x21213232323...
 
 * Only use  Contract above , **DON'T** use other contract to avoid bad action 
 
 
-
-# Support My work 🦄:
-
-    
-  ETH Address:
- 
-    0xe8dda644fD1fDcDF36b1aA70F3c588cD330b353b
-
-
 Process:
-* Approve 
+* Approve above address to spend your ARTX
   - https://etherscan.io/address/0x741b0428efdf4372a8df6fb54b018db5e5ab7710#writeContract
+* 
