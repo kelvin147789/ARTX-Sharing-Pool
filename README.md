@@ -20,4 +20,5 @@
 # Process:
 * Approve above address to spend your ARTX
   - https://etherscan.io/address/0x741b0428efdf4372a8df6fb54b018db5e5ab7710#writeContract
-* 
+* Deposit Your ARTX 
+  - https://etherscan.io/address/0x43e3073d73b8c9061174f3c2c977e6b4abfb0d06#writeContract
