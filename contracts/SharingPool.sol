@@ -29,11 +29,11 @@ contract SharingPool {
   }
   
 
-  function returnARTXAddress() public view returns(address){
+  function returnARTXAddress() external view returns(address){
     return artxAddress;
   }
 
-  function setArtxAddress(address _address) public {
+  function setArtxAddress(address _address) external {
     require(msg.sender == dev,"only dev can cahnge");
     artxAddress = _address;
   }
@@ -43,13 +43,32 @@ contract SharingPool {
     return artx.balanceOf(_address);
   }
 
-  function approveARTX(uint256 _amount) public {
-
-  }
-
   function returnContractARTX() public view returns(uint256){
     return getARTXBalance(address(this));
   }
+
+   function allowance(address _owner,address _spender) external view returns(uint256) {
+    ARTXToken artx = ARTXToken(artxAddress);
+    artx.allowance(_owner,_spender);
+  }
+  
+  // This need toe be manually approve
+  // function approveARTX(address _spender , uint256 _amount) external {
+  //   ARTXToken artx = ARTXToken(artxAddress);
+  //   artx.approve(_spender,_amount);
+  // }
+
+  function deposit( uint256 _amount) public returns (bool){
+    UserInfo storage user = userInfo[msg.sender];
+    ARTXToken artx = ARTXToken(artxAddress);
+    user.depositAmount = user.depositAmount.add(_amount);
+    totalDepositAmount.add(_amount);
+    user.rewardDiv = user.depositAmount.div(totalDepositAmount);
+    artx.transferFrom(msg.sender,address(this),_amount);
+    return true;
+  }
+
+ 
 
   
 
