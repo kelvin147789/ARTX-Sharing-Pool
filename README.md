@@ -12,7 +12,7 @@
 
 
 * To support Dev , send any amount of ETH to this Sharing Pool Contract, thank you 🦄 !
-> 0x21213232323...
+> 0x43e3073D73B8c9061174F3C2c977E6B4aBfb0d06
 
 * Only use  Contract above , **DON'T** use other contract to avoid bad action 
 
