@@ -1,6 +1,6 @@
  This project is designed to used for small ARTX holder to participate in share which suppose to require 10K.
  
- <b>FInd ARTX Sharing Pool partner: </b>
+ <b>Discuss with ARTX Sharing Pool partner: </b>
  - https://t.me/joinchat/EgwXwSb2G6s2YTY1
   
   Contract Address:
