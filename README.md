@@ -15,4 +15,4 @@
 
 * To support Dev , send any amount of ETH to the Sharing Pool Contract, thank you !
 
-* Only use  Contract above , avoid using other contract to avoid bad action 
+* Only use  Contract above , **DON'T** using other contract to avoid bad action 
