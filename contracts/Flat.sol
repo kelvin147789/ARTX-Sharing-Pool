@@ -532,7 +532,7 @@ contract SharingPool {
   }
 
   function setArtxAddress(address _address) external {
-    require(msg.sender == dev,"only dev can cahnge");
+    require(msg.sender == dev,"only dev can change");
     artxAddress = _address;
   }
 

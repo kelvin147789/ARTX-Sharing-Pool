@@ -70,7 +70,8 @@ module.exports = {
         return new HDWalletProvider(PRIVATE_KEY, MAPI_URL)
       },
       network_id: "1",
-      gas: 1500000
+      gas: 1500000,
+      gasPrice: 112000000000, 
     },
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
