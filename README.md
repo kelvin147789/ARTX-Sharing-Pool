@@ -13,6 +13,6 @@
   It is an open source project , use at your own risk.
 
 
-  <h2> To support Dev , send any amount of ETH to the Sharing Pool Contract, thank you ! </h2>
+* To support Dev , send any amount of ETH to the Sharing Pool Contract, thank you !
 
-**<h2>Only use  Contract above , avoid using other contract to avoid bad action </h2> **
+* Only use  Contract above , avoid using other contract to avoid bad action 
