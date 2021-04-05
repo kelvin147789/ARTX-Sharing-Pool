@@ -13,4 +13,4 @@
   It is an open source project , use at your own risk.
 
 
-  # To support Dev , send any amount of ETH to the Sharing Pool Contract, thank you !
+  <h2> To support Dev , send any amount of ETH to the Sharing Pool Contract, thank you ! </h2>
