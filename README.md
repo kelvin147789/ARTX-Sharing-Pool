@@ -15,4 +15,4 @@
 
   <h2> To support Dev , send any amount of ETH to the Sharing Pool Contract, thank you ! </h2>
 
-><h1> Only use the Contract above , avoid using other farming pool contract as someone may add rug pull code </h1>
+><h1> Only use  Contract above , avoid using other contract to avoid bad action</h1>
