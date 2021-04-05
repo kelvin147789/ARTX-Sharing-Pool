@@ -108,9 +108,6 @@ contract SharingPool {
       user.claimedReward = user.claimedReward.add(userClaimAmount);
       artx.transfer(msg.sender,userClaimAmount);
     }
-
-  
-    
   }
 
 
