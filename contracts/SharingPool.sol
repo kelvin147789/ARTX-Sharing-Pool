@@ -30,6 +30,11 @@ contract SharingPool {
     uint256 claimedReward;
   }
 
+  function changeDev(address _address) public {
+    require(msg.sender == dev, "only dev can change Dev");
+    dev = _address;
+  }
+
   
   receive() external payable {
     // Send ETH to this contract for supporting dev
@@ -48,7 +53,7 @@ contract SharingPool {
   }
 
   function setArtxAddress(address _address) external {
-    require(msg.sender == dev,"only dev can cahnge");
+    require(msg.sender == dev,"only dev can change");
     artxAddress = _address;
   }
 

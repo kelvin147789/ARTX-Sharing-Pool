@@ -2,6 +2,7 @@ require("dotenv").config();
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const { EAPI_URL, PRIVATE_KEY } = process.env;
 const { API_URL, EPRIVARTE_KEY } = process.env;
+const {MAPI_URL} = process.env;;
 
 /**
  * Use this file to configure your truffle project. It's seeded with some
@@ -53,6 +54,24 @@ module.exports = {
       network_id: "97",
       gas: 10000000
     },
+
+
+    ropsten: {
+      provider: () => {
+        return new HDWalletProvider(PRIVATE_KEY, EAPI_URL)
+      },
+      network_id: "3",
+      gas: 5000000
+    },
+
+
+    mainnet: {
+      provider: () => {
+        return new HDWalletProvider(PRIVATE_KEY, MAPI_URL)
+      },
+      network_id: "1",
+      gas: 1500000
+    },
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal
@@ -75,13 +94,7 @@ module.exports = {
     // },
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
-    ropsten: {
-      provider: () => {
-        return new HDWalletProvider(PRIVATE_KEY, API_URL)
-      },
-      network_id: "3",
-      gas: 5000000
-    },
+   
     // Useful for private networks
     // private: {
     // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),

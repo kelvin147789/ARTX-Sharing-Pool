@@ -7,7 +7,8 @@ const ARTXToken = artifacts.require("ARTXToken");
 module.exports = async function (deployer) {
 
   // await deployer.deploy(ARTXToken);
-  await deployer.deploy(SharingPool,'0x6A30458929f8a300E9C1B4C11df195d32A79D644');
+  // Remeber to change the address below to official ARTX address 
+  await deployer.deploy(SharingPool,'0x741b0428efdf4372a8df6fb54b018db5e5ab7710');
 };
 
 
