@@ -476,7 +476,7 @@ contract ARTXToken is Context, IERC20, Ownable {
 
 }
 
-// File: contracts/ARTXSharingPool.sol
+// File: contracts/SharingPool.sol
 
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
@@ -484,26 +484,53 @@ pragma solidity >=0.4.22 <0.9.0;
 
 
 
-contract ARTXSharingPool1 {
+contract SharingPool {
 
-  address artxAddress; 
+  constructor(address _address) public {
+    artxAddress = _address;
+  }
+
+  
+
+  using SafeMath for uint256;
+
+  address public dev = msg.sender;
+  address public artxAddress;
+  uint256 public totalDepositAmount;
+  
+
+  mapping(address => UserInfo) public userInfo;
+
+  struct UserInfo {
+    uint256 depositAmount;
+    uint256 rewardDiv; 
+    uint256 claimedReward;
+  }
+  
 
   function returnARTXAddress() public view returns(address){
     return artxAddress;
   }
 
   function setArtxAddress(address _address) public {
+    require(msg.sender == dev,"only dev can cahnge");
     artxAddress = _address;
   }
 
-  function  callARTXBalance() public view returns(uint256){
+  function  getARTXBalance(address _address) public view returns(uint256){
     ARTXToken artx = ARTXToken(artxAddress);
-    return artx.balanceOf(artxAddress);
+    return artx.balanceOf(_address);
   }
 
-  function set() public view returns(uint256) {
-    return 1;
+  function approveARTX(uint256 _amount) public {
+
   }
+
+  function returnContractARTX() public view returns(uint256){
+    return getARTXBalance(address(this));
+  }
+
+  
 
 
  
