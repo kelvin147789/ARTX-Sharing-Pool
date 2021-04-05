@@ -88,15 +88,28 @@ contract SharingPool {
      return getARTXBalance(address(this)).sub(totalDepositAmount);
     }
 
+
+    function withdraw() public {
+      // Claim before withdraw, or reward will be erased
+      UserInfo storage user = userInfo[msg.sender];
+      ARTXToken artx = ARTXToken(artxAddress);
+      uint256 withdrawAmount = user.depositAmount;
+      user.depositAmount = 0;
+      require(withdrawAmount > 0,"Not enough token to withdraw");
+      artx.transfer(msg.sender, withdrawAmount);
+    }
+
+    function claim() public {
+      UserInfo storage user = userInfo[msg.sender];
+      ARTXToken artx = ARTXToken(artxAddress);
+      uint256 totalReward = returnTotalReward();
+      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x).sub(user.claimedReward);
+      require(userClaimAmount > 0,"Not enough reward to claim, try later");
+      user.claimedReward = user.claimedReward.add(userClaimAmount);
+      artx.transfer(msg.sender,userClaimAmount);
+    }
+
   
-
- 
-
-  
-
-
- 
-
     
   }
 
