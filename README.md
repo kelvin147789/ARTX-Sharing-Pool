@@ -14,5 +14,6 @@
 
 
 * To support Dev , send any amount of ETH to the Sharing Pool Contract, thank you !
+> 0x21213232323...
 
 * Only use  Contract above , **DON'T** use other contract to avoid bad action 
