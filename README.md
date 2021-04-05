@@ -7,10 +7,8 @@
  
  
  
- WARMING: It is not official published by ARTX.
+ WARMING: It is not official published by ARTX , use at your own risk !
 
-
-  It is an open source project , use at your own risk.
 
 
 * To support Dev , send any amount of ETH to this Sharing Pool Contract, thank you !
@@ -27,3 +25,7 @@
  
     0xe8dda644fD1fDcDF36b1aA70F3c588cD330b353b
 
+
+Process:
+* Approve 
+  - https://etherscan.io/address/0x741b0428efdf4372a8df6fb54b018db5e5ab7710#writeContract
