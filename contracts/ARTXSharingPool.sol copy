@@ -28,6 +28,9 @@ contract ARTXSharingPool {
 
  using SafeMath for uint256;
 
+ event Transfer(address indexed from, address indexed to, uint256 tokens);
+ event Burn(address indexed burner, uint256 value);
+ event Approval(address indexed tokenOwner, address indexed spender, uint256 tokens);
 
 
   address public artxAddress;
@@ -59,42 +62,27 @@ contract ARTXSharingPool {
   } 
 
 
-  // DEV
-
-
   receive() external payable {
     // Send ETH to this contract for supporting dev
     // Thank you for your support !
   
   }
 
-   function devDonateithdraw(uint256 _amount) public {
+  function returnContractARTXbalance() public view returns (uint256) {
+    return artxContract.balanceOf(address(this));
+  }
+
+  function returnARTXbalance() public view returns (uint256) {
+    return artxContract.balanceOf(address(this));
+  }
+
+  function devDonateithdraw(uint256 _amount) public {
     // Disclaimer: this function only to withdraw ETH donation in the contract, NOT ARTX.Your ARTX is SAFE
     require(msg.sender == owner, "only dev can get donation");
     msg.sender.transfer(_amount);
   }
 
-  // DEV 
-
   
-
-  function returnContractARTX() public view returns (uint256) {
-    return artxContract.balanceOf(address(this));
-  }
-
-  function returnARTXbalance() public view returns (uint256) {
-    return artxContract.balanceOf(msg.sender);
-  }
-
-   function returnTotalRewardAmount() public view returns (uint256) {
-    uint256 rewardAmounts; 
-    rewardAmounts = artxContract.balanceOf(address(this)).sub(totalDepositAmount);
-    return rewardAmounts;
-  }
-
-
-
- 
 
 
   function changeOwnership(address _newDev) public {
@@ -104,12 +92,19 @@ contract ARTXSharingPool {
   }
 
 
- 
+  function returnTotalRewardAmount() public view returns (uint256) {
+    uint256 rewardAmounts; 
+    rewardAmounts = artx.balanceOf(address(this)).sub(totalDepositAmount);
+    return rewardAmounts;
+   
+  }
 
-  
+  function allowance(address _owner, address delegate) public view returns (uint256) {
+       return allowed[_owner][delegate];
+   }
 
    function returnDepositAmount() public view returns (uint256) {
-     return userInfo[msg.sender].depositAmount;
+     return balances[msg.sender];
    }
 
     function returnTotalDepositAmount() public view returns (uint256) {
@@ -119,8 +114,21 @@ contract ARTXSharingPool {
   
 
 
-  
-    
+   function approve(address delegate, uint256 numTokens) public returns (bool) {
+       allowed[msg.sender][delegate] = numTokens;
+       emit Approval(msg.sender, delegate, numTokens);
+       return true;
+   }
+
+    function transferFrom(address _owner, address buyer, uint256 numTokens) public returns (bool) {
+       require(numTokens <= balances[_owner],"num exceeds");   
+       require(numTokens <= allowed[_owner][msg.sender],"allowance exceeds");
+       balances[_owner] = balances[_owner]-= numTokens;
+       allowed[_owner][msg.sender] = allowed[_owner][msg.sender] -= numTokens;
+       balances[buyer] = balances[buyer] += numTokens;
+       emit Transfer(_owner, buyer, numTokens);
+       return true;
+   }
 
 
   function depositARTX (uint256 _depositAmount) public returns (bool){
@@ -130,10 +138,13 @@ contract ARTXSharingPool {
      user.rewardDiv =  balances[msg.sender].div(totalDepositAmount);
      user.depositAmount = _depositAmount.add(_depositAmount);
     totalDepositAmount.add(_depositAmount);
-    artxContract.transferFrom(msg.sender,address(this),_depositAmount);
+    artx.transferFrom(msg.sender,address(this),_depositAmount);
     // Check if new users
     return true;
   }
+ 
+
+
  
 
   function claimReward() public  returns (uint256) {
@@ -144,16 +155,7 @@ contract ARTXSharingPool {
     uint256 userClaimAmount = totalReward.mul(userRewardDiv).sub(userClaimed);
     user.claimedReward = user.claimedReward.add(userClaimAmount);
     require(userClaimAmount > 0 , "No remaining amount of claimedReward");
-    artxContract.transfer(msg.sender,userClaimAmount);
-    return userClaimAmount;
-  }
-
-  function withdraw() public returns (uint256) {
-    UserInfo storage user = userInfo[msg.sender];
-    uint256 withdrawAmount = user.depositAmount;
-    require(withdrawAmount > 0 ,"NO remaining depositAmount");
-     user.depositAmount = 0;
-    artxContract.transfer(msg.sender,withdrawAmount);
+    artx.transfer(msg.sender,userClaimAmount);
   }
 
 
