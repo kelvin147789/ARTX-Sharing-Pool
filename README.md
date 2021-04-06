@@ -1,4 +1,4 @@
-Waiting to deploy if 10K ARTX is ready to add into the pool
+Waiting to deploy if 10K ARTX is ready to add into the pool , if interested , join the telegram group.
 
 Discussion:
 - https://t.me/artxsharingpool
