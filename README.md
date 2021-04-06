@@ -1,4 +1,4 @@
-Still testing
+Waiting to deploy if 10K ARTX is ready to add into the pool
 
 Discussion:
 - https://t.me/artxsharingpool
