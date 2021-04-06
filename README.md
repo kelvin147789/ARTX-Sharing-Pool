@@ -1,5 +1,8 @@
 Still testing
 
+Discussion:
+- https://t.me/artxsharingpool
+
 Ropsten:
 - MOCK ARTX
   > https://ropsten.etherscan.io/address/0x19749b3baf3f8cd2110ca91db1695bbf725c5774#writeContract
