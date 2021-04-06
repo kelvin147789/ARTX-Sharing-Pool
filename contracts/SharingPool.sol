@@ -100,6 +100,7 @@ contract SharingPool {
       ARTXToken artx = ARTXToken(artxAddress);
       uint256 withdrawAmount = user.depositAmount;
       user.depositAmount = 0;
+      user.rewardDiv = 0;
       require(withdrawAmount > 0,"Not enough token to withdraw");
       artx.transfer(msg.sender, withdrawAmount);
     }
