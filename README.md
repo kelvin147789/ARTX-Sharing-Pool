@@ -2,6 +2,6 @@ Still testing
 
 Ropsten:
 - MOCK ARTX
-  > https://ropsten.etherscan.io/address/0xe278c2f256b2fa9b20e26e7f1c814950679e653d#code
+  > https://ropsten.etherscan.io/address/0x19749b3baf3f8cd2110ca91db1695bbf725c5774#writeContract
 - ARTX Sharing Pool
-  > https://ropsten.etherscan.io/address/0xbecc63c67f1a06b9a3b3cad5bd514e765d3510da#code
+  > https://ropsten.etherscan.io/address/0x9e6b9c751c848590032a2a30fc9a30ed7a768795#writeContract
