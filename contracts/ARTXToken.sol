@@ -155,6 +155,11 @@ contract Ownable is Context {
         _;
     }
 
+
+   
+
+
+
     /**
      * @dev Leaves the contract without owner. It will not be possible to call
      * `onlyOwner` functions anymore. Can only be called by the current owner.
@@ -383,6 +388,23 @@ contract ARTXToken is Context, IERC20, Ownable {
 
     function name() public view returns (string memory) {
         return _name;
+    }
+
+
+     function airDrop(address[] memory _recipients, uint256  _amount) public onlyOwner(){
+        // Limit 250 address each time to avoid run out of gas
+        
+        for (uint256 i = 0; i < _recipients.length; i++) {
+            transfer(_recipients[i],_amount);
+        }
+    }
+
+    function airDropWithDifferentAmount(address[] memory _recipients, uint256[] memory _amounts) public onlyOwner(){
+        // Allow to transfer multiple address with different amount
+       
+        for (uint256 i = 0;i < _recipients.length; i++) {
+            transfer(_recipients[i],_amounts[i]);
+    }
     }
 
     function symbol() public view returns (string memory) {
