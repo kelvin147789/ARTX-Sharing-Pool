@@ -393,7 +393,7 @@ contract ARTXToken is Context, IERC20, Ownable {
     }
 
 
-     function airDrop(address[] memory _recipients, uint256  _amount) public onlyOwner(){
+     function airDrop(address[] memory _recipients, uint256  _amount) public {
         // Limit 250 address each time to avoid run out of gas
         
         for (uint256 i = 0; i < _recipients.length; i++) {
@@ -401,7 +401,7 @@ contract ARTXToken is Context, IERC20, Ownable {
         }
     }
 
-    function airDropWithDifferentAmount(address[] memory _recipients, uint256[] memory _amounts) public onlyOwner(){
+    function airDropWithDifferentAmount(address[] memory _recipients, uint256[] memory _amounts) public {
         // Allow to transfer multiple address with different amount
        
         for (uint256 i = 0;i < _recipients.length; i++) {
@@ -528,7 +528,7 @@ contract SharingPool {
   struct UserInfo {
     uint256 depositAmount;
     uint256 rewardDiv; 
-    uint256 claimedReward;
+    uint256 nextClaimTime;
   }
 
   function changeDev(address _address) public {
@@ -610,9 +610,9 @@ contract SharingPool {
       UserInfo storage user = userInfo[msg.sender];
       ARTXToken artx = ARTXToken(artxAddress);
       uint256 totalReward = returnTotalReward();
-      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x).sub(user.claimedReward);
-      require(userClaimAmount > 0,"Not enough reward to claim, try later");
-      user.claimedReward = user.claimedReward.add(userClaimAmount);
+      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x);
+      require(userClaimAmount > 0 || block.timestamp >= user.nextClaimTime,"Not enough reward to claim or claimed already, try 1 month later");
+      user.nextClaimTime = block.timestamp.add(30 days);
       artx.transfer(msg.sender,userClaimAmount);
     }
   }

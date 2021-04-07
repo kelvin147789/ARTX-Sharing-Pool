@@ -13,7 +13,7 @@ module.exports = async function (deployer) {
 
 
 
-// npx truffle-flattener ./contracts/SharingPool.sol > ./contracts/Flat.sol
+// npx truffle-flattener ./contracts/SharingPool.sol > ./contracts/FlatSharingPool.sol
 // npx truffle-flattener ./contracts/ARTXToken.sol > ./contracts/FlatARTXToken.sol
 // ARTX:  0x6a30458929f8a300e9c1b4c11df195d32a79d644
 // 6.12 single no license
