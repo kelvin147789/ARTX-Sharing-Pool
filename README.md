@@ -1,9 +1,9 @@
 Deploy to mainnet if 10K ARTX is ready to add into the pool , if interested , join the telegram group.
 
-Discussion:
+# Discussion:
 - https://t.me/artxsharingpool
 
-Ropsten:
+# Ropsten:
 - MOCK ARTX
   > https://ropsten.etherscan.io/address/0x19749b3baf3f8cd2110ca91db1695bbf725c5774#writeContract
 - ARTX Sharing Pool
@@ -11,13 +11,13 @@ Ropsten:
 
 
 
-Step:
+# Step:
   - Approve Sharing Pool to spend your ARTX
   - Deposit in ARTX sharing Pool
   - Claim in ARTX Sharing Pool
   - Withdraw in ARTX Sharing Pool
 
 
-Video Instruction:
+# Video Instruction:
   - https://youtu.be/sxmxp1TGkJA
 
