@@ -12,7 +12,7 @@ Deploy to mainnet if 10K ARTX is ready to add into the pool , if interested , jo
 
 
 # Step
-  ARTX:
+  ARTX
   - Approve Sharing Pool to spend your ARTX
     
   ARTX Sharing Pool
