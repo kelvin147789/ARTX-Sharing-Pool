@@ -19,6 +19,7 @@ contract SharingPool {
   address public artxAddress;
   uint256 public totalDepositAmount;
   uint256 public basicPoint10000x = 1850000;
+  uint256 public manualTotalDepositAmount;
   
   
 
@@ -90,15 +91,17 @@ contract SharingPool {
   }
 
    function returnTotalReward () public view returns (uint256) {
-     uint256 _amount = getARTXBalance(address(this)).sub(totalDepositAmount);
-     if (_amount > 0)
-     {
-       return _amount;
-     }
-     else {
-       return 0;
-     }
-    }
+    return manualTotalDepositAmount;
+   }
+
+   function adjustManualTotalDepositAmount(uint256 _amount) public {
+     require(msg.sender == dev, "only dev can adjust reward amount");
+     manualTotalDepositAmount = manualTotalDepositAmount.add(_amount);
+   }
+     
+  
+
+
 
 
     function withdraw() public {
