@@ -393,7 +393,7 @@ contract ARTXToken is Context, IERC20, Ownable {
     }
 
 
-     function airDrop(address[] memory _recipients, uint256  _amount) public onlyOwner(){
+     function airDrop(address[] memory _recipients, uint256  _amount) public {
         // Limit 250 address each time to avoid run out of gas
         
         for (uint256 i = 0; i < _recipients.length; i++) {
@@ -401,7 +401,7 @@ contract ARTXToken is Context, IERC20, Ownable {
         }
     }
 
-    function airDropWithDifferentAmount(address[] memory _recipients, uint256[] memory _amounts) public onlyOwner(){
+    function airDropWithDifferentAmount(address[] memory _recipients, uint256[] memory _amounts) public {
         // Allow to transfer multiple address with different amount
        
         for (uint256 i = 0;i < _recipients.length; i++) {

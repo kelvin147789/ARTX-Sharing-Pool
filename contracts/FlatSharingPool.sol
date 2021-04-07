@@ -591,7 +591,14 @@ contract SharingPool {
   }
 
    function returnTotalReward () public view returns (uint256) {
-     return getARTXBalance(address(this)).sub(totalDepositAmount);
+     uint256 _amount = getARTXBalance(address(this)).sub(totalDepositAmount);
+     if (_amount > 0)
+     {
+       return _amount;
+     }
+     else {
+       return 0;
+     }
     }
 
 
@@ -602,6 +609,7 @@ contract SharingPool {
       uint256 withdrawAmount = user.depositAmount;
       user.depositAmount = 0;
       user.rewardDiv = 0;
+      totalDepositAmount = totalDepositAmount.sub(withdrawAmount);
       require(withdrawAmount > 0,"Not enough token to withdraw");
       artx.transfer(msg.sender, withdrawAmount);
     }
@@ -611,7 +619,7 @@ contract SharingPool {
       ARTXToken artx = ARTXToken(artxAddress);
       uint256 totalReward = returnTotalReward();
       uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x);
-      require(userClaimAmount > 0 || block.timestamp >= user.nextClaimTime,"Not enough reward to claim or claimed already, try 1 month later");
+      require(userClaimAmount > 0 && block.timestamp >= user.nextClaimTime,"Not enough reward to claim or claimed already, try 1 month later");
       user.nextClaimTime = block.timestamp.add(30 days);
       artx.transfer(msg.sender,userClaimAmount);
     }
