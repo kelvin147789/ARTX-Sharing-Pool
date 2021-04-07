@@ -19,7 +19,7 @@ contract SharingPool {
   address public artxAddress;
   uint256 public totalDepositAmount;
   uint256 public basicPoint10000x = 1850000;
-  uint256 public manualTotalDepositAmount;
+  uint256 public anualTotalRewardAmount;
   
   
 
@@ -29,7 +29,6 @@ contract SharingPool {
     uint256 depositAmount;
     uint256 rewardDiv; 
     uint256 nextClaimTime;
-    uint256 claimedAmount;
   }
 
   function changeDev(address _address) public {
@@ -92,12 +91,13 @@ contract SharingPool {
   }
 
    function returnTotalReward () public view returns (uint256) {
-    return manualTotalDepositAmount;
+    //  This will be the remaining unclaimed reward + newReward 
+    return anualTotalRewardAmount;
    }
 
-   function adjustManualTotalDepositAmount(uint256 _amount) public {
+   function adjustanualTotalRewardAmount(uint256 _amount) public {
      require(msg.sender == dev, "only dev can adjust reward amount");
-     manualTotalDepositAmount = manualTotalDepositAmount.add(_amount);
+     anualTotalRewardAmount = _amount;
    }
      
   
@@ -118,11 +118,11 @@ contract SharingPool {
     }
 
     function claim() public {
+      // Claim every month before next reward 
       UserInfo storage user = userInfo[msg.sender];
       ARTXToken artx = ARTXToken(artxAddress);
       uint256 totalReward = returnTotalReward();
-      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x).sub(user.claimedAmount);
-      user.claimedAmount = user.claimedAmount.add(userClaimAmount);
+      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x);
       require(userClaimAmount >0,"Not enough reward to claim ");
       require(block.timestamp >= user.nextClaimTime, "claimed already, try 1 month later");
       user.nextClaimTime = block.timestamp.add(31 days);
