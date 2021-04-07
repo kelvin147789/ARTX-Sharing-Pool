@@ -118,7 +118,7 @@ contract SharingPool {
     }
 
     function claim() public {
-      // Claim every month before next reward 
+      // Claim every month before next reward, or your reward would be distributed to all user in next month reward
       UserInfo storage user = userInfo[msg.sender];
       ARTXToken artx = ARTXToken(artxAddress);
       uint256 totalReward = returnTotalReward();
