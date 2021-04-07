@@ -12,10 +12,12 @@ Deploy to mainnet if 10K ARTX is ready to add into the pool , if interested , jo
 
 
 # Step:
-  - Approve Sharing Pool to spend your ARTX
-  - Deposit in ARTX sharing Pool
-  - Claim in ARTX Sharing Pool
-  - Withdraw in ARTX Sharing Pool
+  ARTX
+    - Approve Sharing Pool to spend your ARTX
+  ARTX Sharing Pool
+    - Deposit
+    - Claim 
+    - Withdraw
 
 
 # Video Instruction:
