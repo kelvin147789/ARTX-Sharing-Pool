@@ -22,5 +22,5 @@ Deploy to mainnet if 10K ARTX is ready to add into the pool , if interested , jo
 
 
 # Video Instruction:
-  - https://youtu.be/sxmxp1TGkJA
+
 
