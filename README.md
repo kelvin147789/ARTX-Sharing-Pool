@@ -15,3 +15,9 @@ Step:
   - Approve Sharing Pool to spend your ARTX
   - Deposit in ARTX sharing Pool
   - Claim in ARTX Sharing Pool
+  - Withdraw in ARTX Sharing Pool
+
+
+Video Instruction:
+  - https://youtu.be/sxmxp1TGkJA
+
