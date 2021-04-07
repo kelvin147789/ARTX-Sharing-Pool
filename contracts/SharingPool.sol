@@ -29,6 +29,7 @@ contract SharingPool {
     uint256 depositAmount;
     uint256 rewardDiv; 
     uint256 nextClaimTime;
+    uint256 claimedAmount;
   }
 
   function changeDev(address _address) public {
@@ -120,10 +121,11 @@ contract SharingPool {
       UserInfo storage user = userInfo[msg.sender];
       ARTXToken artx = ARTXToken(artxAddress);
       uint256 totalReward = returnTotalReward();
-      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x);
+      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x).sub(user.claimedAmount);
+      user.claimedAmount = user.claimedAmount.add(userClaimAmount);
       require(userClaimAmount >0,"Not enough reward to claim ");
       require(block.timestamp >= user.nextClaimTime, "claimed already, try 1 month later");
-      user.nextClaimTime = block.timestamp.add(30 days);
+      user.nextClaimTime = block.timestamp.add(31 days);
       artx.transfer(msg.sender,userClaimAmount);
     }
   }

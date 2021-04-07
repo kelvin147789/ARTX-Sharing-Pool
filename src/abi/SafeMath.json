@@ -1,13 +1,13 @@
 {
   "contractName": "SafeMath",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Wrappers over Solidity's arithmetic operations with added overflow checks. Arithmetic operations in Solidity wrap on overflow. This can easily result in bugs, because programmers usually assume that an overflow raises an error, which is the standard behavior in high level programming languages. `SafeMath` restores this intuition by reverting the transaction when an operation overflows. Using this library instead of the unchecked operations eliminates an entire class of bugs, so it's recommended to use it always.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ok/Desktop/Projects/artx-sharing-pool/contracts/FlatSharingPool.sol\":\"SafeMath\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ok/Desktop/Projects/artx-sharing-pool/contracts/FlatSharingPool.sol\":{\"keccak256\":\"0x84a22d724255a5347280abdb562b9b75392eb1dcab266e3867515661eddec662\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ea5cfa58e4d18f8ac6b8e654058cb48e53c220a507c0ece9fd71edb3e9fb9c17\",\"dweb:/ipfs/QmSXgeh2WcXeSWQ79GTRMiK8i1TRCD67Ces5peDkzpu9oZ\"]}},\"version\":1}",
-  "bytecode": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220c1c4d7073a1311e1ae008f47c30097e3c47703e33a6ebaa03aa872de59369e8f64736f6c634300060c0033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220c1c4d7073a1311e1ae008f47c30097e3c47703e33a6ebaa03aa872de59369e8f64736f6c634300060c0033",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Wrappers over Solidity's arithmetic operations with added overflow checks. Arithmetic operations in Solidity wrap on overflow. This can easily result in bugs, because programmers usually assume that an overflow raises an error, which is the standard behavior in high level programming languages. `SafeMath` restores this intuition by reverting the transaction when an operation overflows. Using this library instead of the unchecked operations eliminates an entire class of bugs, so it's recommended to use it always.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/ok/Desktop/Projects/artx-sharing-pool/contracts/FlatSharingPool.sol\":\"SafeMath\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/ok/Desktop/Projects/artx-sharing-pool/contracts/FlatSharingPool.sol\":{\"keccak256\":\"0xdde33fb0eb66724c54b48a9058bdc80b2af6a31c122b0e7b95ebbcbb4656b9e8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3bdf612193bbf55a2ff35043bd71041c709fc87284f79fb10492a31f53ae8edf\",\"dweb:/ipfs/QmRZWGCYmEss4EiADAPYoRM6LMPjNUCw3GtEuT37mzQcqy\"]}},\"version\":1}",
+  "bytecode": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220ae640eeed75694296aff728517022f939b3673589834dc5070586c2a277cb1f764736f6c634300060c0033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220ae640eeed75694296aff728517022f939b3673589834dc5070586c2a277cb1f764736f6c634300060c0033",
   "immutableReferences": {},
   "sourceMap": "6598:4578:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "6598:4578:2:-:0;;;;;;;;",
-  "source": "// File: contracts/ARTXToken.sol\n\n/**\n *Submitted for verification at Etherscan.io on 2021-03-31\n*/\n\n// File: @openzeppelin/contracts/token/ERC20/IERC20.sol\n\n\n\n\npragma solidity ^0.6.12;\n\n/**\n * @dev Interface of the ERC20 standard as defined in the EIP.\n */\ninterface IERC20 {\n    /**\n     * @dev Returns the amount of tokens in existence.\n     */\n    function totalSupply() external view returns (uint256);\n\n    /**\n     * @dev Returns the amount of tokens owned by `account`.\n     */\n    function balanceOf(address account) external view returns (uint256);\n\n    /**\n     * @dev Moves `amount` tokens from the caller's account to `recipient`.\n     *\n     * Returns a boolean value indicating whether the operation succeeded.\n     *\n     * Emits a {Transfer} event.\n     */\n    function transfer(address recipient, uint256 amount) external returns (bool);\n\n    /**\n     * @dev Returns the remaining number of tokens that `spender` will be\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\n     * zero by default.\n     *\n     * This value changes when {approve} or {transferFrom} are called.\n     */\n    function allowance(address owner, address spender) external view returns (uint256);\n\n    /**\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\n     *\n     * Returns a boolean value indicating whether the operation succeeded.\n     *\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\n     * that someone may use both the old and the new allowance by unfortunate\n     * transaction ordering. One possible solution to mitigate this race\n     * condition is to first reduce the spender's allowance to 0 and set the\n     * desired value afterwards:\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\n     *\n     * Emits an {Approval} event.\n     */\n    function approve(address spender, uint256 amount) external returns (bool);\n\n    /**\n     * @dev Moves `amount` tokens from `sender` to `recipient` using the\n     * allowance mechanism. `amount` is then deducted from the caller's\n     * allowance.\n     *\n     * Returns a boolean value indicating whether the operation succeeded.\n     *\n     * Emits a {Transfer} event.\n     */\n    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);\n\n    /**\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\n     * another (`to`).\n     *\n     * Note that `value` may be zero.\n     */\n    event Transfer(address indexed from, address indexed to, uint256 value);\n\n    /**\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\n     * a call to {approve}. `value` is the new allowance.\n     */\n    event Approval(address indexed owner, address indexed spender, uint256 value);\n}\n\n// File: @openzeppelin/contracts/GSN/Context.sol\n\n\n\npragma solidity ^0.6.12;\n\n/*\n * @dev Provides information about the current execution context, including the\n * sender of the transaction and its data. While these are generally available\n * via msg.sender and msg.data, they should not be accessed in such a direct\n * manner, since when dealing with GSN meta-transactions the account sending and\n * paying for execution may not be the actual sender (as far as an application\n * is concerned).\n *\n * This contract is only required for intermediate, library-like contracts.\n */\nabstract contract Context {\n    function _msgSender() internal view virtual returns (address payable) {\n        return msg.sender;\n    }\n\n    function _msgData() internal view virtual returns (bytes memory) {\n        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691\n        return msg.data;\n    }\n}\n\n\n\npragma solidity ^0.6.0;\n\n/**\n * @dev Contract module which provides a basic access control mechanism, where\n * there is an account (an owner) that can be granted exclusive access to\n * specific functions.\n *\n * By default, the owner account will be the one that deploys the contract. This\n * can later be changed with {transferOwnership}.\n *\n * This module is used through inheritance. It will make available the modifier\n * `onlyOwner`, which can be applied to your functions to restrict their use to\n * the owner.\n */\ncontract Ownable is Context {\n    address private _owner;\n\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\n\n    /**\n     * @dev Initializes the contract setting the deployer as the initial owner.\n     */\n    constructor () internal {\n        address msgSender = _msgSender();\n        _owner = msgSender;\n        emit OwnershipTransferred(address(0), msgSender);\n    }\n\n    /**\n     * @dev Returns the address of the current owner.\n     */\n    function owner() public view returns (address) {\n        return _owner;\n    }\n\n    /**\n     * @dev Throws if called by any account other than the owner.\n     */\n    modifier onlyOwner() {\n        require(_owner == _msgSender(), \"Ownable: caller is not the owner\");\n        _;\n    }\n\n\n   \n\n\n\n    /**\n     * @dev Leaves the contract without owner. It will not be possible to call\n     * `onlyOwner` functions anymore. Can only be called by the current owner.\n     *\n     * NOTE: Renouncing ownership will leave the contract without an owner,\n     * thereby removing any functionality that is only available to the owner.\n     */\n    function renounceOwnership() public virtual onlyOwner {\n        emit OwnershipTransferred(_owner, address(0));\n        _owner = address(0);\n    }\n\n    /**\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\n     * Can only be called by the current owner.\n     */\n    function transferOwnership(address newOwner) public virtual onlyOwner {\n        require(newOwner != address(0), \"Ownable: new owner is the zero address\");\n        emit OwnershipTransferred(_owner, newOwner);\n        _owner = newOwner;\n    }\n}\n\n// File: @openzeppelin/contracts/math/SafeMath.sol\n\n\n\npragma solidity ^0.6.0;\n\n/**\n * @dev Wrappers over Solidity's arithmetic operations with added overflow\n * checks.\n *\n * Arithmetic operations in Solidity wrap on overflow. This can easily result\n * in bugs, because programmers usually assume that an overflow raises an\n * error, which is the standard behavior in high level programming languages.\n * `SafeMath` restores this intuition by reverting the transaction when an\n * operation overflows.\n *\n * Using this library instead of the unchecked operations eliminates an entire\n * class of bugs, so it's recommended to use it always.\n */\nlibrary SafeMath {\n    /**\n     * @dev Returns the addition of two unsigned integers, reverting on\n     * overflow.\n     *\n     * Counterpart to Solidity's `+` operator.\n     *\n     * Requirements:\n     *\n     * - Addition cannot overflow.\n     */\n    function add(uint256 a, uint256 b) internal pure returns (uint256) {\n        uint256 c = a + b;\n        require(c >= a, \"SafeMath: addition overflow\");\n\n        return c;\n    }\n\n    /**\n     * @dev Returns the subtraction of two unsigned integers, reverting on\n     * overflow (when the result is negative).\n     *\n     * Counterpart to Solidity's `-` operator.\n     *\n     * Requirements:\n     *\n     * - Subtraction cannot overflow.\n     */\n    function sub(uint256 a, uint256 b) internal pure returns (uint256) {\n        return sub(a, b, \"SafeMath: subtraction overflow\");\n    }\n\n    /**\n     * @dev Returns the subtraction of two unsigned integers, reverting with custom message on\n     * overflow (when the result is negative).\n     *\n     * Counterpart to Solidity's `-` operator.\n     *\n     * Requirements:\n     *\n     * - Subtraction cannot overflow.\n     */\n    function sub(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\n        require(b <= a, errorMessage);\n        uint256 c = a - b;\n\n        return c;\n    }\n\n    /**\n     * @dev Returns the multiplication of two unsigned integers, reverting on\n     * overflow.\n     *\n     * Counterpart to Solidity's `*` operator.\n     *\n     * Requirements:\n     *\n     * - Multiplication cannot overflow.\n     */\n    function mul(uint256 a, uint256 b) internal pure returns (uint256) {\n        // Gas optimization: this is cheaper than requiring 'a' not being zero, but the\n        // benefit is lost if 'b' is also tested.\n        // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522\n        if (a == 0) {\n            return 0;\n        }\n\n        uint256 c = a * b;\n        require(c / a == b, \"SafeMath: multiplication overflow\");\n\n        return c;\n    }\n\n    /**\n     * @dev Returns the integer division of two unsigned integers. Reverts on\n     * division by zero. The result is rounded towards zero.\n     *\n     * Counterpart to Solidity's `/` operator. Note: this function uses a\n     * `revert` opcode (which leaves remaining gas untouched) while Solidity\n     * uses an invalid opcode to revert (consuming all remaining gas).\n     *\n     * Requirements:\n     *\n     * - The divisor cannot be zero.\n     */\n    function div(uint256 a, uint256 b) internal pure returns (uint256) {\n        return div(a, b, \"SafeMath: division by zero\");\n    }\n\n    /**\n     * @dev Returns the integer division of two unsigned integers. Reverts with custom message on\n     * division by zero. The result is rounded towards zero.\n     *\n     * Counterpart to Solidity's `/` operator. Note: this function uses a\n     * `revert` opcode (which leaves remaining gas untouched) while Solidity\n     * uses an invalid opcode to revert (consuming all remaining gas).\n     *\n     * Requirements:\n     *\n     * - The divisor cannot be zero.\n     */\n    function div(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\n        require(b > 0, errorMessage);\n        uint256 c = a / b;\n        // assert(a == b * c + a % b); // There is no case in which this doesn't hold\n\n        return c;\n    }\n\n    /**\n     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),\n     * Reverts when dividing by zero.\n     *\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\n     * invalid opcode to revert (consuming all remaining gas).\n     *\n     * Requirements:\n     *\n     * - The divisor cannot be zero.\n     */\n    function mod(uint256 a, uint256 b) internal pure returns (uint256) {\n        return mod(a, b, \"SafeMath: modulo by zero\");\n    }\n\n    /**\n     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),\n     * Reverts with custom message when dividing by zero.\n     *\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\n     * invalid opcode to revert (consuming all remaining gas).\n     *\n     * Requirements:\n     *\n     * - The divisor cannot be zero.\n     */\n    function mod(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\n        require(b != 0, errorMessage);\n        return a % b;\n    }\n}\n\n// File: contracts/ARTX.sol\n\npragma solidity 0.6.12;\n\ninterface ILocker {\n    /**\n     * @dev Fails if transaction is not allowed. \n     * Return values can be ignored for AntiBot launches\n     */\n    function lockOrGetPenalty(address source, address dest)\n    external\n    returns (bool, uint256);\n}\n\n\ncontract ARTXToken is Context, IERC20, Ownable {\n\n    using SafeMath for uint256;\n\n    mapping (address => uint256) private _balances;\n\n    mapping (address => mapping (address => uint256)) private _allowances;\n\n    uint256 private _totalSupply;\n\n    string private _name;\n    string private _symbol;\n    uint8 private _decimals;\n\n    ILocker public locker;\n\n    constructor () public {\n        _name = \"ARTX Token\";\n        _symbol = \"ARTX\";\n        _decimals = 18;\n        uint256 amount = 10000000000000000000000000;\n        _totalSupply = amount;\n        _balances[_msgSender()] = amount;\n        emit Transfer(address(0), _msgSender(), amount);\n    }\n\n    function name() public view returns (string memory) {\n        return _name;\n    }\n\n\n     function airDrop(address[] memory _recipients, uint256  _amount) public {\n        // Limit 250 address each time to avoid run out of gas\n        \n        for (uint256 i = 0; i < _recipients.length; i++) {\n            transfer(_recipients[i],_amount);\n        }\n    }\n\n    function airDropWithDifferentAmount(address[] memory _recipients, uint256[] memory _amounts) public {\n        // Allow to transfer multiple address with different amount\n       \n        for (uint256 i = 0;i < _recipients.length; i++) {\n            transfer(_recipients[i],_amounts[i]);\n    }\n    }\n\n    function symbol() public view returns (string memory) {\n        return _symbol;\n    }\n\n    function decimals() public view returns (uint8) {\n        return _decimals;\n    }\n\n    function totalSupply() public view override returns (uint256) {\n        return _totalSupply;\n    }\n\n    function balanceOf(address account) public view override returns (uint256) {\n        return _balances[account];\n    }\n\n    function transfer(address recipient, uint256 amount) public virtual override returns (bool) {\n        _transfer(_msgSender(), recipient, amount);\n        return true;\n    }\n\n    function allowance(address owner, address spender) public view virtual override returns (uint256) {\n        return _allowances[owner][spender];\n    }\n\n    function approve(address spender, uint256 amount) public virtual override returns (bool) {\n        _approve(_msgSender(), spender, amount);\n        return true;\n    }\n\n    function transferFrom(address sender, address recipient, uint256 amount) public virtual override returns (bool) {\n        _transfer(sender, recipient, amount);\n        _approve(sender, _msgSender(), _allowances[sender][_msgSender()].sub(amount, \"ARTX: transfer amount exceeds allowance\"));\n        return true;\n    }\n\n    function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {\n        _approve(_msgSender(), spender, _allowances[_msgSender()][spender].add(addedValue));\n        return true;\n    }\n\n    function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {\n        _approve(_msgSender(), spender, _allowances[_msgSender()][spender].sub(subtractedValue, \"ARTX: decreased allowance below zero\"));\n        return true;\n    }\n\n    function burn(uint256 amount) public virtual {\n        _burn(_msgSender(), amount);\n    }\n\n    function burnFrom(address account, uint256 amount) public virtual {\n        uint256 decreasedAllowance = allowance(account, _msgSender()).sub(amount, \"ARTX: burn amount exceeds allowance\");\n\n        _approve(account, _msgSender(), decreasedAllowance);\n        _burn(account, amount);\n    }\n\n    function setLocker(address _locker) external onlyOwner() {\n        locker = ILocker(_locker);\n    }   \n\n    function _transfer(address sender, address recipient, uint256 amount) internal virtual {\n        require(sender != address(0), \"ARTX: transfer from the zero address\");\n        require(recipient != address(0), \"ARTX: transfer to the zero address\");\n        if (address(locker) != address(0)) {\n            locker.lockOrGetPenalty(sender, recipient);\n        }\n        _balances[sender] = _balances[sender].sub(amount, \"ARTX: transfer amount exceeds balance\");\n        _balances[recipient] = _balances[recipient].add(amount);\n        emit Transfer(sender, recipient, amount);\n    }\n\n    function _burn(address account, uint256 amount) internal virtual {\n        require(account != address(0), \"ARTX: burn from the zero address\");\n        _balances[account] = _balances[account].sub(amount, \"ARTX: burn amount exceeds balance\");\n        _totalSupply = _totalSupply.sub(amount);\n        emit Transfer(account, address(0), amount);\n    }\n\n    function _approve(address owner, address spender, uint256 amount) internal virtual {\n        require(owner != address(0), \"ARTX: approve from the zero address\");\n        require(spender != address(0), \"ARTX: approve to the zero address\");\n\n        _allowances[owner][spender] = amount;\n        emit Approval(owner, spender, amount);\n    }\n\n}\n\n// File: contracts/SharingPool.sol\n\n// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\n\n\n\ncontract SharingPool {\n\n  constructor(address _address) public {\n    artxAddress = _address;\n  }\n\n  \n\n  using SafeMath for uint256;\n\n  address public dev = msg.sender;\n  address public artxAddress;\n  uint256 public totalDepositAmount;\n  uint256 public basicPoint10000x = 1850000;\n  \n  \n\n  mapping(address => UserInfo) public userInfo;\n\n  struct UserInfo {\n    uint256 depositAmount;\n    uint256 rewardDiv; \n    uint256 nextClaimTime;\n  }\n\n  function changeDev(address _address) public {\n    require(msg.sender == dev, \"only dev can change Dev\");\n    dev = _address;\n  }\n\n  \n  receive() external payable {\n    // Send ETH to this contract for supporting dev\n    // Thank you for your support !\n  }\n\n  function devDonateithdraw(uint256 _amount) public {\n    // Disclaimer: this function only to withdraw ETH donation in the contract, NOT ARTX.Your ARTX is SAFE\n    require(msg.sender == dev, \"only dev can get donation\");\n    msg.sender.transfer(_amount);\n  }\n  \n\n  function returnARTXAddress() external view returns(address){\n    return artxAddress;\n  }\n\n  function setArtxAddress(address _address) external {\n    require(msg.sender == dev,\"only dev can change\");\n    artxAddress = _address;\n  }\n\n  function  getARTXBalance(address _address) public view returns(uint256){\n    ARTXToken artx = ARTXToken(artxAddress);\n    return artx.balanceOf(_address);\n  }\n\n  function returnContractARTX() public view returns(uint256){\n    return getARTXBalance(address(this));\n  }\n\n  //  function allowance(address _owner,address _spender) external view returns(uint256) {\n  //   ARTXToken artx = ARTXToken(artxAddress);\n  //   artx.allowance(_owner,_spender);\n  // }\n  \n  // This need toe be manually approve\n  // function approveARTX(address _spender , uint256 _amount) external {\n  //   ARTXToken artx = ARTXToken(artxAddress);\n  //   artx.approve(_spender,_amount);\n  // }\n\n  function deposit( uint256 _amount) public returns (bool){\n    // Mannually Approve this address to spend ARTX , then call this function\n    UserInfo storage user = userInfo[msg.sender];\n    ARTXToken artx = ARTXToken(artxAddress);\n    user.depositAmount = user.depositAmount.add(_amount);\n    totalDepositAmount = totalDepositAmount.add(_amount);\n    user.rewardDiv = user.depositAmount.mul(basicPoint10000x).div(totalDepositAmount);\n    // Would div basicPoint100x when claim Reward\n    artx.transferFrom(msg.sender,address(this),_amount);\n    return true;\n  }\n\n   function returnTotalReward () public view returns (uint256) {\n     uint256 _amount = getARTXBalance(address(this)).sub(totalDepositAmount);\n     if (_amount > 0)\n     {\n       return _amount;\n     }\n     else {\n       return 0;\n     }\n    }\n\n\n    function withdraw() public {\n      // Claim before withdraw, or reward will be erased\n      UserInfo storage user = userInfo[msg.sender];\n      ARTXToken artx = ARTXToken(artxAddress);\n      uint256 withdrawAmount = user.depositAmount;\n      user.depositAmount = 0;\n      user.rewardDiv = 0;\n      totalDepositAmount = totalDepositAmount.sub(withdrawAmount);\n      require(withdrawAmount > 0,\"Not enough token to withdraw\");\n      artx.transfer(msg.sender, withdrawAmount);\n    }\n\n    function claim() public {\n      UserInfo storage user = userInfo[msg.sender];\n      ARTXToken artx = ARTXToken(artxAddress);\n      uint256 totalReward = returnTotalReward();\n      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x);\n      require(userClaimAmount > 0 && block.timestamp >= user.nextClaimTime,\"Not enough reward to claim or claimed already, try 1 month later\");\n      user.nextClaimTime = block.timestamp.add(30 days);\n      artx.transfer(msg.sender,userClaimAmount);\n    }\n  }\n",
+  "source": "// File: contracts/ARTXToken.sol\n\n/**\n *Submitted for verification at Etherscan.io on 2021-03-31\n*/\n\n// File: @openzeppelin/contracts/token/ERC20/IERC20.sol\n\n\n\n\npragma solidity ^0.6.12;\n\n/**\n * @dev Interface of the ERC20 standard as defined in the EIP.\n */\ninterface IERC20 {\n    /**\n     * @dev Returns the amount of tokens in existence.\n     */\n    function totalSupply() external view returns (uint256);\n\n    /**\n     * @dev Returns the amount of tokens owned by `account`.\n     */\n    function balanceOf(address account) external view returns (uint256);\n\n    /**\n     * @dev Moves `amount` tokens from the caller's account to `recipient`.\n     *\n     * Returns a boolean value indicating whether the operation succeeded.\n     *\n     * Emits a {Transfer} event.\n     */\n    function transfer(address recipient, uint256 amount) external returns (bool);\n\n    /**\n     * @dev Returns the remaining number of tokens that `spender` will be\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\n     * zero by default.\n     *\n     * This value changes when {approve} or {transferFrom} are called.\n     */\n    function allowance(address owner, address spender) external view returns (uint256);\n\n    /**\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\n     *\n     * Returns a boolean value indicating whether the operation succeeded.\n     *\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\n     * that someone may use both the old and the new allowance by unfortunate\n     * transaction ordering. One possible solution to mitigate this race\n     * condition is to first reduce the spender's allowance to 0 and set the\n     * desired value afterwards:\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\n     *\n     * Emits an {Approval} event.\n     */\n    function approve(address spender, uint256 amount) external returns (bool);\n\n    /**\n     * @dev Moves `amount` tokens from `sender` to `recipient` using the\n     * allowance mechanism. `amount` is then deducted from the caller's\n     * allowance.\n     *\n     * Returns a boolean value indicating whether the operation succeeded.\n     *\n     * Emits a {Transfer} event.\n     */\n    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);\n\n    /**\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\n     * another (`to`).\n     *\n     * Note that `value` may be zero.\n     */\n    event Transfer(address indexed from, address indexed to, uint256 value);\n\n    /**\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\n     * a call to {approve}. `value` is the new allowance.\n     */\n    event Approval(address indexed owner, address indexed spender, uint256 value);\n}\n\n// File: @openzeppelin/contracts/GSN/Context.sol\n\n\n\npragma solidity ^0.6.12;\n\n/*\n * @dev Provides information about the current execution context, including the\n * sender of the transaction and its data. While these are generally available\n * via msg.sender and msg.data, they should not be accessed in such a direct\n * manner, since when dealing with GSN meta-transactions the account sending and\n * paying for execution may not be the actual sender (as far as an application\n * is concerned).\n *\n * This contract is only required for intermediate, library-like contracts.\n */\nabstract contract Context {\n    function _msgSender() internal view virtual returns (address payable) {\n        return msg.sender;\n    }\n\n    function _msgData() internal view virtual returns (bytes memory) {\n        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691\n        return msg.data;\n    }\n}\n\n\n\npragma solidity ^0.6.0;\n\n/**\n * @dev Contract module which provides a basic access control mechanism, where\n * there is an account (an owner) that can be granted exclusive access to\n * specific functions.\n *\n * By default, the owner account will be the one that deploys the contract. This\n * can later be changed with {transferOwnership}.\n *\n * This module is used through inheritance. It will make available the modifier\n * `onlyOwner`, which can be applied to your functions to restrict their use to\n * the owner.\n */\ncontract Ownable is Context {\n    address private _owner;\n\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\n\n    /**\n     * @dev Initializes the contract setting the deployer as the initial owner.\n     */\n    constructor () internal {\n        address msgSender = _msgSender();\n        _owner = msgSender;\n        emit OwnershipTransferred(address(0), msgSender);\n    }\n\n    /**\n     * @dev Returns the address of the current owner.\n     */\n    function owner() public view returns (address) {\n        return _owner;\n    }\n\n    /**\n     * @dev Throws if called by any account other than the owner.\n     */\n    modifier onlyOwner() {\n        require(_owner == _msgSender(), \"Ownable: caller is not the owner\");\n        _;\n    }\n\n\n   \n\n\n\n    /**\n     * @dev Leaves the contract without owner. It will not be possible to call\n     * `onlyOwner` functions anymore. Can only be called by the current owner.\n     *\n     * NOTE: Renouncing ownership will leave the contract without an owner,\n     * thereby removing any functionality that is only available to the owner.\n     */\n    function renounceOwnership() public virtual onlyOwner {\n        emit OwnershipTransferred(_owner, address(0));\n        _owner = address(0);\n    }\n\n    /**\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\n     * Can only be called by the current owner.\n     */\n    function transferOwnership(address newOwner) public virtual onlyOwner {\n        require(newOwner != address(0), \"Ownable: new owner is the zero address\");\n        emit OwnershipTransferred(_owner, newOwner);\n        _owner = newOwner;\n    }\n}\n\n// File: @openzeppelin/contracts/math/SafeMath.sol\n\n\n\npragma solidity ^0.6.0;\n\n/**\n * @dev Wrappers over Solidity's arithmetic operations with added overflow\n * checks.\n *\n * Arithmetic operations in Solidity wrap on overflow. This can easily result\n * in bugs, because programmers usually assume that an overflow raises an\n * error, which is the standard behavior in high level programming languages.\n * `SafeMath` restores this intuition by reverting the transaction when an\n * operation overflows.\n *\n * Using this library instead of the unchecked operations eliminates an entire\n * class of bugs, so it's recommended to use it always.\n */\nlibrary SafeMath {\n    /**\n     * @dev Returns the addition of two unsigned integers, reverting on\n     * overflow.\n     *\n     * Counterpart to Solidity's `+` operator.\n     *\n     * Requirements:\n     *\n     * - Addition cannot overflow.\n     */\n    function add(uint256 a, uint256 b) internal pure returns (uint256) {\n        uint256 c = a + b;\n        require(c >= a, \"SafeMath: addition overflow\");\n\n        return c;\n    }\n\n    /**\n     * @dev Returns the subtraction of two unsigned integers, reverting on\n     * overflow (when the result is negative).\n     *\n     * Counterpart to Solidity's `-` operator.\n     *\n     * Requirements:\n     *\n     * - Subtraction cannot overflow.\n     */\n    function sub(uint256 a, uint256 b) internal pure returns (uint256) {\n        return sub(a, b, \"SafeMath: subtraction overflow\");\n    }\n\n    /**\n     * @dev Returns the subtraction of two unsigned integers, reverting with custom message on\n     * overflow (when the result is negative).\n     *\n     * Counterpart to Solidity's `-` operator.\n     *\n     * Requirements:\n     *\n     * - Subtraction cannot overflow.\n     */\n    function sub(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\n        require(b <= a, errorMessage);\n        uint256 c = a - b;\n\n        return c;\n    }\n\n    /**\n     * @dev Returns the multiplication of two unsigned integers, reverting on\n     * overflow.\n     *\n     * Counterpart to Solidity's `*` operator.\n     *\n     * Requirements:\n     *\n     * - Multiplication cannot overflow.\n     */\n    function mul(uint256 a, uint256 b) internal pure returns (uint256) {\n        // Gas optimization: this is cheaper than requiring 'a' not being zero, but the\n        // benefit is lost if 'b' is also tested.\n        // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522\n        if (a == 0) {\n            return 0;\n        }\n\n        uint256 c = a * b;\n        require(c / a == b, \"SafeMath: multiplication overflow\");\n\n        return c;\n    }\n\n    /**\n     * @dev Returns the integer division of two unsigned integers. Reverts on\n     * division by zero. The result is rounded towards zero.\n     *\n     * Counterpart to Solidity's `/` operator. Note: this function uses a\n     * `revert` opcode (which leaves remaining gas untouched) while Solidity\n     * uses an invalid opcode to revert (consuming all remaining gas).\n     *\n     * Requirements:\n     *\n     * - The divisor cannot be zero.\n     */\n    function div(uint256 a, uint256 b) internal pure returns (uint256) {\n        return div(a, b, \"SafeMath: division by zero\");\n    }\n\n    /**\n     * @dev Returns the integer division of two unsigned integers. Reverts with custom message on\n     * division by zero. The result is rounded towards zero.\n     *\n     * Counterpart to Solidity's `/` operator. Note: this function uses a\n     * `revert` opcode (which leaves remaining gas untouched) while Solidity\n     * uses an invalid opcode to revert (consuming all remaining gas).\n     *\n     * Requirements:\n     *\n     * - The divisor cannot be zero.\n     */\n    function div(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\n        require(b > 0, errorMessage);\n        uint256 c = a / b;\n        // assert(a == b * c + a % b); // There is no case in which this doesn't hold\n\n        return c;\n    }\n\n    /**\n     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),\n     * Reverts when dividing by zero.\n     *\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\n     * invalid opcode to revert (consuming all remaining gas).\n     *\n     * Requirements:\n     *\n     * - The divisor cannot be zero.\n     */\n    function mod(uint256 a, uint256 b) internal pure returns (uint256) {\n        return mod(a, b, \"SafeMath: modulo by zero\");\n    }\n\n    /**\n     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),\n     * Reverts with custom message when dividing by zero.\n     *\n     * Counterpart to Solidity's `%` operator. This function uses a `revert`\n     * opcode (which leaves remaining gas untouched) while Solidity uses an\n     * invalid opcode to revert (consuming all remaining gas).\n     *\n     * Requirements:\n     *\n     * - The divisor cannot be zero.\n     */\n    function mod(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {\n        require(b != 0, errorMessage);\n        return a % b;\n    }\n}\n\n// File: contracts/ARTX.sol\n\npragma solidity 0.6.12;\n\ninterface ILocker {\n    /**\n     * @dev Fails if transaction is not allowed. \n     * Return values can be ignored for AntiBot launches\n     */\n    function lockOrGetPenalty(address source, address dest)\n    external\n    returns (bool, uint256);\n}\n\n\ncontract ARTXToken is Context, IERC20, Ownable {\n\n    using SafeMath for uint256;\n\n    mapping (address => uint256) private _balances;\n\n    mapping (address => mapping (address => uint256)) private _allowances;\n\n    uint256 private _totalSupply;\n\n    string private _name;\n    string private _symbol;\n    uint8 private _decimals;\n\n    ILocker public locker;\n\n    constructor () public {\n        _name = \"ARTX Token\";\n        _symbol = \"ARTX\";\n        _decimals = 18;\n        uint256 amount = 10000000000000000000000000;\n        _totalSupply = amount;\n        _balances[_msgSender()] = amount;\n        emit Transfer(address(0), _msgSender(), amount);\n    }\n\n    function name() public view returns (string memory) {\n        return _name;\n    }\n\n\n     function airDrop(address[] memory _recipients, uint256  _amount) public {\n        // Limit 250 address each time to avoid run out of gas\n        \n        for (uint256 i = 0; i < _recipients.length; i++) {\n            transfer(_recipients[i],_amount);\n        }\n    }\n\n    function airDropWithDifferentAmount(address[] memory _recipients, uint256[] memory _amounts) public {\n        // Allow to transfer multiple address with different amount\n       \n        for (uint256 i = 0;i < _recipients.length; i++) {\n            transfer(_recipients[i],_amounts[i]);\n    }\n    }\n\n    function symbol() public view returns (string memory) {\n        return _symbol;\n    }\n\n    function decimals() public view returns (uint8) {\n        return _decimals;\n    }\n\n    function totalSupply() public view override returns (uint256) {\n        return _totalSupply;\n    }\n\n    function balanceOf(address account) public view override returns (uint256) {\n        return _balances[account];\n    }\n\n    function transfer(address recipient, uint256 amount) public virtual override returns (bool) {\n        _transfer(_msgSender(), recipient, amount);\n        return true;\n    }\n\n    function allowance(address owner, address spender) public view virtual override returns (uint256) {\n        return _allowances[owner][spender];\n    }\n\n    function approve(address spender, uint256 amount) public virtual override returns (bool) {\n        _approve(_msgSender(), spender, amount);\n        return true;\n    }\n\n    function transferFrom(address sender, address recipient, uint256 amount) public virtual override returns (bool) {\n        _transfer(sender, recipient, amount);\n        _approve(sender, _msgSender(), _allowances[sender][_msgSender()].sub(amount, \"ARTX: transfer amount exceeds allowance\"));\n        return true;\n    }\n\n    function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {\n        _approve(_msgSender(), spender, _allowances[_msgSender()][spender].add(addedValue));\n        return true;\n    }\n\n    function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {\n        _approve(_msgSender(), spender, _allowances[_msgSender()][spender].sub(subtractedValue, \"ARTX: decreased allowance below zero\"));\n        return true;\n    }\n\n    function burn(uint256 amount) public virtual {\n        _burn(_msgSender(), amount);\n    }\n\n    function burnFrom(address account, uint256 amount) public virtual {\n        uint256 decreasedAllowance = allowance(account, _msgSender()).sub(amount, \"ARTX: burn amount exceeds allowance\");\n\n        _approve(account, _msgSender(), decreasedAllowance);\n        _burn(account, amount);\n    }\n\n    function setLocker(address _locker) external onlyOwner() {\n        locker = ILocker(_locker);\n    }   \n\n    function _transfer(address sender, address recipient, uint256 amount) internal virtual {\n        require(sender != address(0), \"ARTX: transfer from the zero address\");\n        require(recipient != address(0), \"ARTX: transfer to the zero address\");\n        if (address(locker) != address(0)) {\n            locker.lockOrGetPenalty(sender, recipient);\n        }\n        _balances[sender] = _balances[sender].sub(amount, \"ARTX: transfer amount exceeds balance\");\n        _balances[recipient] = _balances[recipient].add(amount);\n        emit Transfer(sender, recipient, amount);\n    }\n\n    function _burn(address account, uint256 amount) internal virtual {\n        require(account != address(0), \"ARTX: burn from the zero address\");\n        _balances[account] = _balances[account].sub(amount, \"ARTX: burn amount exceeds balance\");\n        _totalSupply = _totalSupply.sub(amount);\n        emit Transfer(account, address(0), amount);\n    }\n\n    function _approve(address owner, address spender, uint256 amount) internal virtual {\n        require(owner != address(0), \"ARTX: approve from the zero address\");\n        require(spender != address(0), \"ARTX: approve to the zero address\");\n\n        _allowances[owner][spender] = amount;\n        emit Approval(owner, spender, amount);\n    }\n\n}\n\n// File: contracts/SharingPool.sol\n\n// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\n\n\n\ncontract SharingPool {\n\n  constructor(address _address) public {\n    artxAddress = _address;\n  }\n\n  \n\n  using SafeMath for uint256;\n\n  address public dev = msg.sender;\n  address public artxAddress;\n  uint256 public totalDepositAmount;\n  uint256 public basicPoint10000x = 1850000;\n  \n  \n\n  mapping(address => UserInfo) public userInfo;\n\n  struct UserInfo {\n    uint256 depositAmount;\n    uint256 rewardDiv; \n    uint256 nextClaimTime;\n  }\n\n  function changeDev(address _address) public {\n    require(msg.sender == dev, \"only dev can change Dev\");\n    dev = _address;\n  }\n\n  \n  receive() external payable {\n    // Send ETH to this contract for supporting dev\n    // Thank you for your support !\n  }\n\n  function devDonateithdraw(uint256 _amount) public {\n    // Disclaimer: this function only to withdraw ETH donation in the contract, NOT ARTX.Your ARTX is SAFE\n    require(msg.sender == dev, \"only dev can get donation\");\n    msg.sender.transfer(_amount);\n  }\n  \n\n  function returnARTXAddress() external view returns(address){\n    return artxAddress;\n  }\n\n  function setArtxAddress(address _address) external {\n    require(msg.sender == dev,\"only dev can change\");\n    artxAddress = _address;\n  }\n\n  function  getARTXBalance(address _address) public view returns(uint256){\n    ARTXToken artx = ARTXToken(artxAddress);\n    return artx.balanceOf(_address);\n  }\n\n  function returnContractARTX() public view returns(uint256){\n    return getARTXBalance(address(this));\n  }\n\n  //  function allowance(address _owner,address _spender) external view returns(uint256) {\n  //   ARTXToken artx = ARTXToken(artxAddress);\n  //   artx.allowance(_owner,_spender);\n  // }\n  \n  // This need toe be manually approve\n  // function approveARTX(address _spender , uint256 _amount) external {\n  //   ARTXToken artx = ARTXToken(artxAddress);\n  //   artx.approve(_spender,_amount);\n  // }\n\n  function deposit( uint256 _amount) public returns (bool){\n    // Mannually Approve this address to spend ARTX , then call this function\n    UserInfo storage user = userInfo[msg.sender];\n    ARTXToken artx = ARTXToken(artxAddress);\n    user.depositAmount = user.depositAmount.add(_amount);\n    totalDepositAmount = totalDepositAmount.add(_amount);\n    user.rewardDiv = user.depositAmount.mul(basicPoint10000x).div(totalDepositAmount);\n    // Would div basicPoint100x when claim Reward\n    artx.transferFrom(msg.sender,address(this),_amount);\n    return true;\n  }\n\n   function returnTotalReward () public view returns (uint256) {\n     uint256 _amount = getARTXBalance(address(this)).sub(totalDepositAmount);\n     if (_amount > 0)\n     {\n       return _amount;\n     }\n     else {\n       return 0;\n     }\n    }\n\n\n    function withdraw() public {\n      // Claim before withdraw, or reward will be erased\n      UserInfo storage user = userInfo[msg.sender];\n      ARTXToken artx = ARTXToken(artxAddress);\n      uint256 withdrawAmount = user.depositAmount;\n      user.depositAmount = 0;\n      user.rewardDiv = 0;\n      totalDepositAmount = totalDepositAmount.sub(withdrawAmount);\n      require(withdrawAmount > 0,\"Not enough token to withdraw\");\n      artx.transfer(msg.sender, withdrawAmount);\n    }\n\n    function claim() public {\n      UserInfo storage user = userInfo[msg.sender];\n      ARTXToken artx = ARTXToken(artxAddress);\n      uint256 totalReward = returnTotalReward();\n      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x);\n      require(userClaimAmount >0,\"Not enough reward to claim \");\n      require(block.timestamp >= user.nextClaimTime, \"claimed already, try 1 month later\");\n      user.nextClaimTime = block.timestamp.add(30 days);\n      artx.transfer(msg.sender,userClaimAmount);\n    }\n  }\n",
   "sourcePath": "/Users/ok/Desktop/Projects/artx-sharing-pool/contracts/FlatSharingPool.sol",
   "ast": {
     "absolutePath": "/Users/ok/Desktop/Projects/artx-sharing-pool/contracts/FlatSharingPool.sol",
@@ -31,10 +31,10 @@
         2337
       ],
       "SharingPool": [
-        3255
+        3258
       ]
     },
-    "id": 3256,
+    "id": 3259,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -957,7 +957,7 @@
             "src": "2744:78:2"
           }
         ],
-        "scope": 3256,
+        "scope": 3259,
         "src": "258:2566:2"
       },
       {
@@ -1201,7 +1201,7 @@
             "visibility": "internal"
           }
         ],
-        "scope": 3256,
+        "scope": 3259,
         "src": "3404:374:2"
       },
       {
@@ -2550,7 +2550,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 3256,
+        "scope": 3259,
         "src": "4302:1651:2"
       },
       {
@@ -5095,7 +5095,7 @@
             "visibility": "internal"
           }
         ],
-        "scope": 3256,
+        "scope": 3259,
         "src": "6598:4578:2"
       },
       {
@@ -5273,7 +5273,7 @@
             "visibility": "external"
           }
         ],
-        "scope": 3256,
+        "scope": 3259,
         "src": "11232:246:2"
       },
       {
@@ -12681,7 +12681,7 @@
             "visibility": "internal"
           }
         ],
-        "scope": 3256,
+        "scope": 3259,
         "src": "11481:4826:2"
       },
       {
@@ -12705,9 +12705,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3255,
+        "id": 3258,
         "linearizedBaseContracts": [
-          3255
+          3258
         ],
         "name": "SharingPool",
         "nodeType": "ContractDefinition",
@@ -12816,7 +12816,7 @@
               "parameters": [],
               "src": "16477:0:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "16440:70:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -12857,7 +12857,7 @@
             "name": "dev",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 3255,
+            "scope": 3258,
             "src": "16549:31:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -12915,7 +12915,7 @@
             "name": "artxAddress",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 3255,
+            "scope": 3258,
             "src": "16584:26:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -12945,7 +12945,7 @@
             "name": "totalDepositAmount",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 3255,
+            "scope": 3258,
             "src": "16614:33:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -12974,7 +12974,7 @@
             "name": "basicPoint10000x",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 3255,
+            "scope": 3258,
             "src": "16651:41:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -13020,7 +13020,7 @@
             "name": "userInfo",
             "nodeType": "VariableDeclaration",
             "overrides": null,
-            "scope": 3255,
+            "scope": 3258,
             "src": "16703:44:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -13153,7 +13153,7 @@
             ],
             "name": "UserInfo",
             "nodeType": "StructDefinition",
-            "scope": 3255,
+            "scope": 3258,
             "src": "16752:99:2",
             "visibility": "public"
           },
@@ -13390,7 +13390,7 @@
               "parameters": [],
               "src": "16899:0:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "16855:128:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -13423,7 +13423,7 @@
               "parameters": [],
               "src": "17017:0:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "16990:120:2",
             "stateMutability": "payable",
             "virtual": false,
@@ -13702,7 +13702,7 @@
               "parameters": [],
               "src": "17164:0:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "17114:257:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -13786,7 +13786,7 @@
               ],
               "src": "17428:9:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "17378:88:2",
             "stateMutability": "view",
             "virtual": false,
@@ -14025,7 +14025,7 @@
               "parameters": [],
               "src": "17521:0:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "17470:138:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -14281,7 +14281,7 @@
               ],
               "src": "17674:9:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "17612:158:2",
             "stateMutability": "view",
             "virtual": false,
@@ -14309,7 +14309,7 @@
                             "referencedDeclaration": -28,
                             "src": "17868:4:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_SharingPool_$3255",
+                              "typeIdentifier": "t_contract$_SharingPool_$3258",
                               "typeString": "contract SharingPool"
                             }
                           }
@@ -14317,7 +14317,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_SharingPool_$3255",
+                              "typeIdentifier": "t_contract$_SharingPool_$3258",
                               "typeString": "contract SharingPool"
                             }
                           ],
@@ -14449,7 +14449,7 @@
               ],
               "src": "17823:9:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "17774:105:2",
             "stateMutability": "view",
             "virtual": false,
@@ -15106,7 +15106,7 @@
                             "referencedDeclaration": -28,
                             "src": "18804:4:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_SharingPool_$3255",
+                              "typeIdentifier": "t_contract$_SharingPool_$3258",
                               "typeString": "contract SharingPool"
                             }
                           }
@@ -15114,7 +15114,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_SharingPool_$3255",
+                              "typeIdentifier": "t_contract$_SharingPool_$3258",
                               "typeString": "contract SharingPool"
                             }
                           ],
@@ -15335,7 +15335,7 @@
               ],
               "src": "18329:6:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "18279:561:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -15421,7 +15421,7 @@
                                 "referencedDeclaration": -28,
                                 "src": "18953:4:2",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_SharingPool_$3255",
+                                  "typeIdentifier": "t_contract$_SharingPool_$3258",
                                   "typeString": "contract SharingPool"
                                 }
                               }
@@ -15429,7 +15429,7 @@
                             "expression": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_contract$_SharingPool_$3255",
+                                  "typeIdentifier": "t_contract$_SharingPool_$3258",
                                   "typeString": "contract SharingPool"
                                 }
                               ],
@@ -15700,7 +15700,7 @@
               ],
               "src": "18895:9:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "18845:240:2",
             "stateMutability": "view",
             "virtual": false,
@@ -16442,7 +16442,7 @@
               "parameters": [],
               "src": "19119:0:2"
             },
-            "scope": 3255,
+            "scope": 3258,
             "src": "19092:479:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -16450,9 +16450,9 @@
           },
           {
             "body": {
-              "id": 3253,
+              "id": 3256,
               "nodeType": "Block",
-              "src": "19601:492:2",
+              "src": "19601:505:2",
               "statements": [
                 {
                   "assignments": [
@@ -16466,7 +16466,7 @@
                       "name": "user",
                       "nodeType": "VariableDeclaration",
                       "overrides": null,
-                      "scope": 3253,
+                      "scope": 3256,
                       "src": "19609:21:2",
                       "stateVariable": false,
                       "storageLocation": "storage",
@@ -16562,7 +16562,7 @@
                       "name": "artx",
                       "nodeType": "VariableDeclaration",
                       "overrides": null,
-                      "scope": 3253,
+                      "scope": 3256,
                       "src": "19661:14:2",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -16652,7 +16652,7 @@
                       "name": "totalReward",
                       "nodeType": "VariableDeclaration",
                       "overrides": null,
-                      "scope": 3253,
+                      "scope": 3256,
                       "src": "19708:19:2",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -16721,7 +16721,7 @@
                       "name": "userClaimAmount",
                       "nodeType": "VariableDeclaration",
                       "overrides": null,
-                      "scope": 3253,
+                      "scope": 3256,
                       "src": "19757:23:2",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -16889,144 +16889,48 @@
                       {
                         "argumentTypes": null,
                         "commonType": {
-                          "typeIdentifier": "t_bool",
-                          "typeString": "bool"
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
                         },
-                        "id": 3231,
+                        "id": 3225,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "commonType": {
+                          "id": 3223,
+                          "name": "userClaimAmount",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3212,
+                          "src": "19852:15:2",
+                          "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
-                          },
-                          "id": 3225,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "leftExpression": {
-                            "argumentTypes": null,
-                            "id": 3223,
-                            "name": "userClaimAmount",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 3212,
-                            "src": "19852:15:2",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_uint256",
-                              "typeString": "uint256"
-                            }
-                          },
-                          "nodeType": "BinaryOperation",
-                          "operator": ">",
-                          "rightExpression": {
-                            "argumentTypes": null,
-                            "hexValue": "30",
-                            "id": 3224,
-                            "isConstant": false,
-                            "isLValue": false,
-                            "isPure": true,
-                            "kind": "number",
-                            "lValueRequested": false,
-                            "nodeType": "Literal",
-                            "src": "19870:1:2",
-                            "subdenomination": null,
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_rational_0_by_1",
-                              "typeString": "int_const 0"
-                            },
-                            "value": "0"
-                          },
-                          "src": "19852:19:2",
-                          "typeDescriptions": {
-                            "typeIdentifier": "t_bool",
-                            "typeString": "bool"
                           }
                         },
                         "nodeType": "BinaryOperation",
-                        "operator": "&&",
+                        "operator": ">",
                         "rightExpression": {
                           "argumentTypes": null,
-                          "commonType": {
-                            "typeIdentifier": "t_uint256",
-                            "typeString": "uint256"
-                          },
-                          "id": 3230,
+                          "hexValue": "30",
+                          "id": 3224,
                           "isConstant": false,
                           "isLValue": false,
-                          "isPure": false,
+                          "isPure": true,
+                          "kind": "number",
                           "lValueRequested": false,
-                          "leftExpression": {
-                            "argumentTypes": null,
-                            "expression": {
-                              "argumentTypes": null,
-                              "id": 3226,
-                              "name": "block",
-                              "nodeType": "Identifier",
-                              "overloadedDeclarations": [],
-                              "referencedDeclaration": -4,
-                              "src": "19875:5:2",
-                              "typeDescriptions": {
-                                "typeIdentifier": "t_magic_block",
-                                "typeString": "block"
-                              }
-                            },
-                            "id": 3227,
-                            "isConstant": false,
-                            "isLValue": false,
-                            "isPure": false,
-                            "lValueRequested": false,
-                            "memberName": "timestamp",
-                            "nodeType": "MemberAccess",
-                            "referencedDeclaration": null,
-                            "src": "19875:15:2",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_uint256",
-                              "typeString": "uint256"
-                            }
-                          },
-                          "nodeType": "BinaryOperation",
-                          "operator": ">=",
-                          "rightExpression": {
-                            "argumentTypes": null,
-                            "expression": {
-                              "argumentTypes": null,
-                              "id": 3228,
-                              "name": "user",
-                              "nodeType": "Identifier",
-                              "overloadedDeclarations": [],
-                              "referencedDeclaration": 3194,
-                              "src": "19894:4:2",
-                              "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_UserInfo_$2939_storage_ptr",
-                                "typeString": "struct SharingPool.UserInfo storage pointer"
-                              }
-                            },
-                            "id": 3229,
-                            "isConstant": false,
-                            "isLValue": true,
-                            "isPure": false,
-                            "lValueRequested": false,
-                            "memberName": "nextClaimTime",
-                            "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2938,
-                            "src": "19894:18:2",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_uint256",
-                              "typeString": "uint256"
-                            }
-                          },
-                          "src": "19875:37:2",
+                          "nodeType": "Literal",
+                          "src": "19869:1:2",
+                          "subdenomination": null,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_bool",
-                            "typeString": "bool"
-                          }
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
                         },
-                        "src": "19852:60:2",
+                        "src": "19852:18:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -17034,21 +16938,21 @@
                       },
                       {
                         "argumentTypes": null,
-                        "hexValue": "4e6f7420656e6f7567682072657761726420746f20636c61696d206f7220636c61696d656420616c72656164792c207472792031206d6f6e7468206c61746572",
-                        "id": 3232,
+                        "hexValue": "4e6f7420656e6f7567682072657761726420746f20636c61696d20",
+                        "id": 3226,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "19913:66:2",
+                        "src": "19871:29:2",
                         "subdenomination": null,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_stringliteral_6dce0bae6759f61009d030599d8888229abffb53aeeb3569fb55f3c619ee955e",
-                          "typeString": "literal_string \"Not enough reward to claim or claimed already, try 1 month later\""
+                          "typeIdentifier": "t_stringliteral_f1838adb01fba85a677a426ef85a118cecc06500712b65ece60235730da34a99",
+                          "typeString": "literal_string \"Not enough reward to claim \""
                         },
-                        "value": "Not enough reward to claim or claimed already, try 1 month later"
+                        "value": "Not enough reward to claim "
                       }
                     ],
                     "expression": {
@@ -17058,8 +16962,8 @@
                           "typeString": "bool"
                         },
                         {
-                          "typeIdentifier": "t_stringliteral_6dce0bae6759f61009d030599d8888229abffb53aeeb3569fb55f3c619ee955e",
-                          "typeString": "literal_string \"Not enough reward to claim or claimed already, try 1 month later\""
+                          "typeIdentifier": "t_stringliteral_f1838adb01fba85a677a426ef85a118cecc06500712b65ece60235730da34a99",
+                          "typeString": "literal_string \"Not enough reward to claim \""
                         }
                       ],
                       "id": 3222,
@@ -17076,7 +16980,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 3233,
+                    "id": 3227,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -17084,21 +16988,165 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "19844:136:2",
+                    "src": "19844:57:2",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 3234,
+                  "id": 3228,
                   "nodeType": "ExpressionStatement",
-                  "src": "19844:136:2"
+                  "src": "19844:57:2"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 3243,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 3234,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 3230,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": -4,
+                            "src": "19917:5:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 3231,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "19917:15:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 3232,
+                            "name": "user",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3194,
+                            "src": "19936:4:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_UserInfo_$2939_storage_ptr",
+                              "typeString": "struct SharingPool.UserInfo storage pointer"
+                            }
+                          },
+                          "id": 3233,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "nextClaimTime",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2938,
+                          "src": "19936:18:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "19917:37:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "636c61696d656420616c72656164792c207472792031206d6f6e7468206c61746572",
+                        "id": 3235,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "19956:36:2",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_db9b7d5c8db7f67d0fd6ca006fb21f6d876edcb25902149bb87023b9ac7d6790",
+                          "typeString": "literal_string \"claimed already, try 1 month later\""
+                        },
+                        "value": "claimed already, try 1 month later"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_db9b7d5c8db7f67d0fd6ca006fb21f6d876edcb25902149bb87023b9ac7d6790",
+                          "typeString": "literal_string \"claimed already, try 1 month later\""
+                        }
+                      ],
+                      "id": 3229,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "19909:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 3236,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "19909:84:2",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3237,
+                  "nodeType": "ExpressionStatement",
+                  "src": "19909:84:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 3246,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -17107,18 +17155,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 3235,
+                        "id": 3238,
                         "name": "user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 3194,
-                        "src": "19988:4:2",
+                        "src": "20001:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_UserInfo_$2939_storage_ptr",
                           "typeString": "struct SharingPool.UserInfo storage pointer"
                         }
                       },
-                      "id": 3237,
+                      "id": 3240,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
@@ -17126,7 +17174,7 @@
                       "memberName": "nextClaimTime",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2938,
-                      "src": "19988:18:2",
+                      "src": "20001:18:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -17140,14 +17188,14 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "3330",
-                          "id": 3241,
+                          "id": 3244,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "20029:7:2",
+                          "src": "20042:7:2",
                           "subdenomination": "days",
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_2592000_by_1",
@@ -17167,18 +17215,18 @@
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 3238,
+                            "id": 3241,
                             "name": "block",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": -4,
-                            "src": "20009:5:2",
+                            "src": "20022:5:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_block",
                               "typeString": "block"
                             }
                           },
-                          "id": 3239,
+                          "id": 3242,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -17186,13 +17234,13 @@
                           "memberName": "timestamp",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-                          "src": "20009:15:2",
+                          "src": "20022:15:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 3240,
+                        "id": 3243,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -17200,13 +17248,13 @@
                         "memberName": "add",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": 2170,
-                        "src": "20009:19:2",
+                        "src": "20022:19:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                           "typeString": "function (uint256,uint256) pure returns (uint256)"
                         }
                       },
-                      "id": 3242,
+                      "id": 3245,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -17214,22 +17262,22 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "20009:28:2",
+                      "src": "20022:28:2",
                       "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "19988:49:2",
+                    "src": "20001:49:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 3244,
+                  "id": 3247,
                   "nodeType": "ExpressionStatement",
-                  "src": "19988:49:2"
+                  "src": "20001:49:2"
                 },
                 {
                   "expression": {
@@ -17239,18 +17287,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 3248,
+                          "id": 3251,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": -15,
-                          "src": "20059:3:2",
+                          "src": "20072:3:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 3249,
+                        "id": 3252,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -17258,7 +17306,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "20059:10:2",
+                        "src": "20072:10:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
@@ -17266,12 +17314,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 3250,
+                        "id": 3253,
                         "name": "userClaimAmount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 3212,
-                        "src": "20070:15:2",
+                        "src": "20083:15:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -17291,18 +17339,18 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 3245,
+                        "id": 3248,
                         "name": "artx",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 3201,
-                        "src": "20045:4:2",
+                        "src": "20058:4:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_ARTXToken_$2903",
                           "typeString": "contract ARTXToken"
                         }
                       },
-                      "id": 3247,
+                      "id": 3250,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -17310,13 +17358,13 @@
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 2548,
-                      "src": "20045:13:2",
+                      "src": "20058:13:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
                         "typeString": "function (address,uint256) external returns (bool)"
                       }
                     },
-                    "id": 3251,
+                    "id": 3254,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -17324,22 +17372,22 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "20045:41:2",
+                    "src": "20058:41:2",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 3252,
+                  "id": 3255,
                   "nodeType": "ExpressionStatement",
-                  "src": "20045:41:2"
+                  "src": "20058:41:2"
                 }
               ]
             },
             "documentation": null,
             "functionSelector": "4e71d92d",
-            "id": 3254,
+            "id": 3257,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -17358,18 +17406,18 @@
               "parameters": [],
               "src": "19601:0:2"
             },
-            "scope": 3255,
-            "src": "19577:516:2",
+            "scope": 3258,
+            "src": "19577:529:2",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 3256,
-        "src": "16414:3683:2"
+        "scope": 3259,
+        "src": "16414:3696:2"
       }
     ],
-    "src": "161:19937:2"
+    "src": "161:19950:2"
   },
   "legacyAST": {
     "attributes": {
@@ -17394,7 +17442,7 @@
           2337
         ],
         "SharingPool": [
-          3255
+          3258
         ]
       },
       "license": "MIT"
@@ -17428,7 +17476,7 @@
             2013
           ],
           "name": "IERC20",
-          "scope": 3256
+          "scope": 3259
         },
         "children": [
           {
@@ -18432,7 +18480,7 @@
             2035
           ],
           "name": "Context",
-          "scope": 3256
+          "scope": 3259
         },
         "children": [
           {
@@ -18720,7 +18768,7 @@
             2035
           ],
           "name": "Ownable",
-          "scope": 3256
+          "scope": 3259
         },
         "children": [
           {
@@ -20231,7 +20279,7 @@
             2337
           ],
           "name": "SafeMath",
-          "scope": 3256
+          "scope": 3259
         },
         "children": [
           {
@@ -22960,7 +23008,7 @@
             2351
           ],
           "name": "ILocker",
-          "scope": 3256
+          "scope": 3259
         },
         "children": [
           {
@@ -23145,7 +23193,7 @@
             2035
           ],
           "name": "ARTXToken",
-          "scope": 3256
+          "scope": 3259
         },
         "children": [
           {
@@ -31271,10 +31319,10 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            3255
+            3258
           ],
           "name": "SharingPool",
-          "scope": 3256
+          "scope": 3259
         },
         "children": [
           {
@@ -31288,7 +31336,7 @@
               ],
               "name": "",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "public"
@@ -31438,7 +31486,7 @@
               "mutability": "mutable",
               "name": "dev",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -31498,7 +31546,7 @@
               "mutability": "mutable",
               "name": "artxAddress",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -31528,7 +31576,7 @@
               "mutability": "mutable",
               "name": "totalDepositAmount",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -31557,7 +31605,7 @@
               "mutability": "mutable",
               "name": "basicPoint10000x",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -31602,7 +31650,7 @@
               "mutability": "mutable",
               "name": "userInfo",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => struct SharingPool.UserInfo)",
@@ -31649,7 +31697,7 @@
             "attributes": {
               "canonicalName": "SharingPool.UserInfo",
               "name": "UserInfo",
-              "scope": 3255,
+              "scope": 3258,
               "visibility": "public"
             },
             "children": [
@@ -31754,7 +31802,7 @@
               ],
               "name": "changeDev",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "public"
@@ -32015,7 +32063,7 @@
               ],
               "name": "",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "payable",
               "virtual": false,
               "visibility": "external"
@@ -32071,7 +32119,7 @@
               ],
               "name": "devDonateithdraw",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "public"
@@ -32376,7 +32424,7 @@
               ],
               "name": "returnARTXAddress",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "external"
@@ -32477,7 +32525,7 @@
               ],
               "name": "setArtxAddress",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "external"
@@ -32739,7 +32787,7 @@
               ],
               "name": "getARTXBalance",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "public"
@@ -33017,7 +33065,7 @@
               ],
               "name": "returnContractARTX",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "public"
@@ -33131,7 +33179,7 @@
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_SharingPool_$3255",
+                                      "typeIdentifier": "t_contract$_SharingPool_$3258",
                                       "typeString": "contract SharingPool"
                                     }
                                   ],
@@ -33207,7 +33255,7 @@
               ],
               "name": "deposit",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "public"
@@ -34045,7 +34093,7 @@
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_SharingPool_$3255",
+                                      "typeIdentifier": "t_contract$_SharingPool_$3258",
                                       "typeString": "contract SharingPool"
                                     }
                                   ],
@@ -34162,7 +34210,7 @@
               ],
               "name": "returnTotalReward",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "public"
@@ -34339,7 +34387,7 @@
                                         "attributes": {
                                           "argumentTypes": [
                                             {
-                                              "typeIdentifier": "t_contract$_SharingPool_$3255",
+                                              "typeIdentifier": "t_contract$_SharingPool_$3258",
                                               "typeString": "contract SharingPool"
                                             }
                                           ],
@@ -34562,7 +34610,7 @@
               ],
               "name": "withdraw",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "public"
@@ -35366,7 +35414,7 @@
               ],
               "name": "claim",
               "overrides": null,
-              "scope": 3255,
+              "scope": 3258,
               "stateMutability": "nonpayable",
               "virtual": false,
               "visibility": "public"
@@ -35409,7 +35457,7 @@
                           "mutability": "mutable",
                           "name": "user",
                           "overrides": null,
-                          "scope": 3253,
+                          "scope": 3256,
                           "stateVariable": false,
                           "storageLocation": "storage",
                           "type": "struct SharingPool.UserInfo",
@@ -35511,7 +35559,7 @@
                           "mutability": "mutable",
                           "name": "artx",
                           "overrides": null,
-                          "scope": 3253,
+                          "scope": 3256,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "contract ARTXToken",
@@ -35607,7 +35655,7 @@
                           "mutability": "mutable",
                           "name": "totalReward",
                           "overrides": null,
-                          "scope": 3253,
+                          "scope": 3256,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -35687,7 +35735,7 @@
                           "mutability": "mutable",
                           "name": "userClaimAmount",
                           "overrides": null,
-                          "scope": 3253,
+                          "scope": 3256,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -35885,8 +35933,8 @@
                                   "typeString": "bool"
                                 },
                                 {
-                                  "typeIdentifier": "t_stringliteral_6dce0bae6759f61009d030599d8888229abffb53aeeb3569fb55f3c619ee955e",
-                                  "typeString": "literal_string \"Not enough reward to claim or claimed already, try 1 month later\""
+                                  "typeIdentifier": "t_stringliteral_f1838adb01fba85a677a426ef85a118cecc06500712b65ece60235730da34a99",
+                                  "typeString": "literal_string \"Not enough reward to claim \""
                                 }
                               ],
                               "overloadedDeclarations": [
@@ -35905,30 +35953,147 @@
                             "attributes": {
                               "argumentTypes": null,
                               "commonType": {
-                                "typeIdentifier": "t_bool",
-                                "typeString": "bool"
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
                               },
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
                               "lValueRequested": false,
-                              "operator": "&&",
+                              "operator": ">",
                               "type": "bool"
                             },
                             "children": [
                               {
                                 "attributes": {
                                   "argumentTypes": null,
-                                  "commonType": {
-                                    "typeIdentifier": "t_uint256",
-                                    "typeString": "uint256"
-                                  },
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3212,
+                                  "type": "uint256",
+                                  "value": "userClaimAmount"
+                                },
+                                "id": 3223,
+                                "name": "Identifier",
+                                "src": "19852:15:2"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "30",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 0",
+                                  "value": "0"
+                                },
+                                "id": 3224,
+                                "name": "Literal",
+                                "src": "19869:1:2"
+                              }
+                            ],
+                            "id": 3225,
+                            "name": "BinaryOperation",
+                            "src": "19852:18:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "4e6f7420656e6f7567682072657761726420746f20636c61696d20",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "string",
+                              "type": "literal_string \"Not enough reward to claim \"",
+                              "value": "Not enough reward to claim "
+                            },
+                            "id": 3226,
+                            "name": "Literal",
+                            "src": "19871:29:2"
+                          }
+                        ],
+                        "id": 3227,
+                        "name": "FunctionCall",
+                        "src": "19844:57:2"
+                      }
+                    ],
+                    "id": 3228,
+                    "name": "ExpressionStatement",
+                    "src": "19844:57:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                {
+                                  "typeIdentifier": "t_stringliteral_db9b7d5c8db7f67d0fd6ca006fb21f6d876edcb25902149bb87023b9ac7d6790",
+                                  "typeString": "literal_string \"claimed already, try 1 month later\""
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                -18,
+                                -18
+                              ],
+                              "referencedDeclaration": -18,
+                              "type": "function (bool,string memory) pure",
+                              "value": "require"
+                            },
+                            "id": 3229,
+                            "name": "Identifier",
+                            "src": "19909:7:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": ">=",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": false,
                                   "lValueRequested": false,
-                                  "operator": ">",
-                                  "type": "bool"
+                                  "member_name": "timestamp",
+                                  "referencedDeclaration": null,
+                                  "type": "uint256"
                                 },
                                 "children": [
                                   {
@@ -35937,149 +36102,81 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3212,
-                                      "type": "uint256",
-                                      "value": "userClaimAmount"
+                                      "referencedDeclaration": -4,
+                                      "type": "block",
+                                      "value": "block"
                                     },
-                                    "id": 3223,
+                                    "id": 3230,
                                     "name": "Identifier",
-                                    "src": "19852:15:2"
-                                  },
-                                  {
-                                    "attributes": {
-                                      "argumentTypes": null,
-                                      "hexvalue": "30",
-                                      "isConstant": false,
-                                      "isLValue": false,
-                                      "isPure": true,
-                                      "lValueRequested": false,
-                                      "subdenomination": null,
-                                      "token": "number",
-                                      "type": "int_const 0",
-                                      "value": "0"
-                                    },
-                                    "id": 3224,
-                                    "name": "Literal",
-                                    "src": "19870:1:2"
+                                    "src": "19917:5:2"
                                   }
                                 ],
-                                "id": 3225,
-                                "name": "BinaryOperation",
-                                "src": "19852:19:2"
+                                "id": 3231,
+                                "name": "MemberAccess",
+                                "src": "19917:15:2"
                               },
                               {
                                 "attributes": {
                                   "argumentTypes": null,
-                                  "commonType": {
-                                    "typeIdentifier": "t_uint256",
-                                    "typeString": "uint256"
-                                  },
                                   "isConstant": false,
-                                  "isLValue": false,
+                                  "isLValue": true,
                                   "isPure": false,
                                   "lValueRequested": false,
-                                  "operator": ">=",
-                                  "type": "bool"
+                                  "member_name": "nextClaimTime",
+                                  "referencedDeclaration": 2938,
+                                  "type": "uint256"
                                 },
                                 "children": [
                                   {
                                     "attributes": {
                                       "argumentTypes": null,
-                                      "isConstant": false,
-                                      "isLValue": false,
-                                      "isPure": false,
-                                      "lValueRequested": false,
-                                      "member_name": "timestamp",
-                                      "referencedDeclaration": null,
-                                      "type": "uint256"
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3194,
+                                      "type": "struct SharingPool.UserInfo storage pointer",
+                                      "value": "user"
                                     },
-                                    "children": [
-                                      {
-                                        "attributes": {
-                                          "argumentTypes": null,
-                                          "overloadedDeclarations": [
-                                            null
-                                          ],
-                                          "referencedDeclaration": -4,
-                                          "type": "block",
-                                          "value": "block"
-                                        },
-                                        "id": 3226,
-                                        "name": "Identifier",
-                                        "src": "19875:5:2"
-                                      }
-                                    ],
-                                    "id": 3227,
-                                    "name": "MemberAccess",
-                                    "src": "19875:15:2"
-                                  },
-                                  {
-                                    "attributes": {
-                                      "argumentTypes": null,
-                                      "isConstant": false,
-                                      "isLValue": true,
-                                      "isPure": false,
-                                      "lValueRequested": false,
-                                      "member_name": "nextClaimTime",
-                                      "referencedDeclaration": 2938,
-                                      "type": "uint256"
-                                    },
-                                    "children": [
-                                      {
-                                        "attributes": {
-                                          "argumentTypes": null,
-                                          "overloadedDeclarations": [
-                                            null
-                                          ],
-                                          "referencedDeclaration": 3194,
-                                          "type": "struct SharingPool.UserInfo storage pointer",
-                                          "value": "user"
-                                        },
-                                        "id": 3228,
-                                        "name": "Identifier",
-                                        "src": "19894:4:2"
-                                      }
-                                    ],
-                                    "id": 3229,
-                                    "name": "MemberAccess",
-                                    "src": "19894:18:2"
+                                    "id": 3232,
+                                    "name": "Identifier",
+                                    "src": "19936:4:2"
                                   }
                                 ],
-                                "id": 3230,
-                                "name": "BinaryOperation",
-                                "src": "19875:37:2"
+                                "id": 3233,
+                                "name": "MemberAccess",
+                                "src": "19936:18:2"
                               }
                             ],
-                            "id": 3231,
+                            "id": 3234,
                             "name": "BinaryOperation",
-                            "src": "19852:60:2"
+                            "src": "19917:37:2"
                           },
                           {
                             "attributes": {
                               "argumentTypes": null,
-                              "hexvalue": "4e6f7420656e6f7567682072657761726420746f20636c61696d206f7220636c61696d656420616c72656164792c207472792031206d6f6e7468206c61746572",
+                              "hexvalue": "636c61696d656420616c72656164792c207472792031206d6f6e7468206c61746572",
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "lValueRequested": false,
                               "subdenomination": null,
                               "token": "string",
-                              "type": "literal_string \"Not enough reward to claim or claimed already, try 1 month later\"",
-                              "value": "Not enough reward to claim or claimed already, try 1 month later"
+                              "type": "literal_string \"claimed already, try 1 month later\"",
+                              "value": "claimed already, try 1 month later"
                             },
-                            "id": 3232,
+                            "id": 3235,
                             "name": "Literal",
-                            "src": "19913:66:2"
+                            "src": "19956:36:2"
                           }
                         ],
-                        "id": 3233,
+                        "id": 3236,
                         "name": "FunctionCall",
-                        "src": "19844:136:2"
+                        "src": "19909:84:2"
                       }
                     ],
-                    "id": 3234,
+                    "id": 3237,
                     "name": "ExpressionStatement",
-                    "src": "19844:136:2"
+                    "src": "19909:84:2"
                   },
                   {
                     "children": [
@@ -36116,14 +36213,14 @@
                                   "type": "struct SharingPool.UserInfo storage pointer",
                                   "value": "user"
                                 },
-                                "id": 3235,
+                                "id": 3238,
                                 "name": "Identifier",
-                                "src": "19988:4:2"
+                                "src": "20001:4:2"
                               }
                             ],
-                            "id": 3237,
+                            "id": 3240,
                             "name": "MemberAccess",
-                            "src": "19988:18:2"
+                            "src": "20001:18:2"
                           },
                           {
                             "attributes": {
@@ -36180,19 +36277,19 @@
                                           "type": "block",
                                           "value": "block"
                                         },
-                                        "id": 3238,
+                                        "id": 3241,
                                         "name": "Identifier",
-                                        "src": "20009:5:2"
+                                        "src": "20022:5:2"
                                       }
                                     ],
-                                    "id": 3239,
+                                    "id": 3242,
                                     "name": "MemberAccess",
-                                    "src": "20009:15:2"
+                                    "src": "20022:15:2"
                                   }
                                 ],
-                                "id": 3240,
+                                "id": 3243,
                                 "name": "MemberAccess",
-                                "src": "20009:19:2"
+                                "src": "20022:19:2"
                               },
                               {
                                 "attributes": {
@@ -36207,24 +36304,24 @@
                                   "type": "int_const 2592000",
                                   "value": "30"
                                 },
-                                "id": 3241,
+                                "id": 3244,
                                 "name": "Literal",
-                                "src": "20029:7:2"
+                                "src": "20042:7:2"
                               }
                             ],
-                            "id": 3242,
+                            "id": 3245,
                             "name": "FunctionCall",
-                            "src": "20009:28:2"
+                            "src": "20022:28:2"
                           }
                         ],
-                        "id": 3243,
+                        "id": 3246,
                         "name": "Assignment",
-                        "src": "19988:49:2"
+                        "src": "20001:49:2"
                       }
                     ],
-                    "id": 3244,
+                    "id": 3247,
                     "name": "ExpressionStatement",
-                    "src": "19988:49:2"
+                    "src": "20001:49:2"
                   },
                   {
                     "children": [
@@ -36275,14 +36372,14 @@
                                   "type": "contract ARTXToken",
                                   "value": "artx"
                                 },
-                                "id": 3245,
+                                "id": 3248,
                                 "name": "Identifier",
-                                "src": "20045:4:2"
+                                "src": "20058:4:2"
                               }
                             ],
-                            "id": 3247,
+                            "id": 3250,
                             "name": "MemberAccess",
-                            "src": "20045:13:2"
+                            "src": "20058:13:2"
                           },
                           {
                             "attributes": {
@@ -36306,14 +36403,14 @@
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 3248,
+                                "id": 3251,
                                 "name": "Identifier",
-                                "src": "20059:3:2"
+                                "src": "20072:3:2"
                               }
                             ],
-                            "id": 3249,
+                            "id": 3252,
                             "name": "MemberAccess",
-                            "src": "20059:10:2"
+                            "src": "20072:10:2"
                           },
                           {
                             "attributes": {
@@ -36325,39 +36422,39 @@
                               "type": "uint256",
                               "value": "userClaimAmount"
                             },
-                            "id": 3250,
+                            "id": 3253,
                             "name": "Identifier",
-                            "src": "20070:15:2"
+                            "src": "20083:15:2"
                           }
                         ],
-                        "id": 3251,
+                        "id": 3254,
                         "name": "FunctionCall",
-                        "src": "20045:41:2"
+                        "src": "20058:41:2"
                       }
                     ],
-                    "id": 3252,
+                    "id": 3255,
                     "name": "ExpressionStatement",
-                    "src": "20045:41:2"
+                    "src": "20058:41:2"
                   }
                 ],
-                "id": 3253,
+                "id": 3256,
                 "name": "Block",
-                "src": "19601:492:2"
+                "src": "19601:505:2"
               }
             ],
-            "id": 3254,
+            "id": 3257,
             "name": "FunctionDefinition",
-            "src": "19577:516:2"
+            "src": "19577:529:2"
           }
         ],
-        "id": 3255,
+        "id": 3258,
         "name": "ContractDefinition",
-        "src": "16414:3683:2"
+        "src": "16414:3696:2"
       }
     ],
-    "id": 3256,
+    "id": 3259,
     "name": "SourceUnit",
-    "src": "161:19937:2"
+    "src": "161:19950:2"
   },
   "compiler": {
     "name": "solc",
@@ -36365,7 +36462,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-04-07T03:09:39.207Z",
+  "updatedAt": "2021-04-07T03:44:10.639Z",
   "devdoc": {
     "details": "Wrappers over Solidity's arithmetic operations with added overflow checks. Arithmetic operations in Solidity wrap on overflow. This can easily result in bugs, because programmers usually assume that an overflow raises an error, which is the standard behavior in high level programming languages. `SafeMath` restores this intuition by reverting the transaction when an operation overflows. Using this library instead of the unchecked operations eliminates an entire class of bugs, so it's recommended to use it always.",
     "kind": "dev",
