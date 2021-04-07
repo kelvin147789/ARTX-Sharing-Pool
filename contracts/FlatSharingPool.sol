@@ -619,7 +619,8 @@ contract SharingPool {
       ARTXToken artx = ARTXToken(artxAddress);
       uint256 totalReward = returnTotalReward();
       uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x);
-      require(userClaimAmount > 0 && block.timestamp >= user.nextClaimTime,"Not enough reward to claim or claimed already, try 1 month later");
+      require(userClaimAmount >0,"Not enough reward to claim ");
+      require(block.timestamp >= user.nextClaimTime, "claimed already, try 1 month later");
       user.nextClaimTime = block.timestamp.add(30 days);
       artx.transfer(msg.sender,userClaimAmount);
     }
