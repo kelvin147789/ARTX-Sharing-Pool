@@ -110,12 +110,8 @@ contract SharingPool {
   }
 
    function returnTotalReward () public view returns (uint256) {
-    //  This will be the remaining unclaimed reward + newReward 
     return getARTXBalance(address(this)).sub(totalDepositAmount);
    }
-
- 
-     
 
     function withdrawAmount(uint256 _amount) public {
       // Claim before withdraw, or reward will be erased
@@ -132,18 +128,12 @@ contract SharingPool {
       }
       artx.transfer(msg.sender, _amount);
     }
-    
-    
-   
+     
    function remove(uint256 index) internal {
    delete users[index];
    }
-   
    
 }
   
 
 
-
-
-  
