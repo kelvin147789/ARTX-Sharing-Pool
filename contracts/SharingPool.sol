@@ -19,7 +19,7 @@ contract SharingPool {
   address public artxAddress;
   uint256 public totalDepositAmount;
   uint256 public basicPoint10000x = 1850000;
-  uint256 public manualTotalRewardAmount;
+  uint256 public manualTotalRewardAmount ;
   uint256 public latestID = 0;
   
   
@@ -50,7 +50,7 @@ contract SharingPool {
   user.depositAmount = user.depositAmount.add(addAmount);
   }
   //all airdropped ARTX is added to user's depositAmount
-  manualTotalRewardAmount = 0;
+  manualTotalRewardAmount = manualTotalRewardAmount.add(_airdropAmount);
   
   }
 
