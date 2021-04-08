@@ -5,9 +5,9 @@ Deploy to mainnet if 10K ARTX is ready to add into the pool , if interested , jo
 
 # Ropsten:
 - MOCK ARTX
-  > 
+  > https://ropsten.etherscan.io/address/0x0694449b1e243230e602e7e107479cbdbec9038f#writeContract
 - ARTX Sharing Pool
-  > 
+  > https://ropsten.etherscan.io/address/0x55406003bf84688efc8507ed304eef71b28756a4#writeContract
 
 
 
