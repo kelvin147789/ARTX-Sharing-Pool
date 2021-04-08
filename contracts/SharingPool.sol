@@ -20,20 +20,38 @@ contract SharingPool {
   uint256 public totalDepositAmount;
   uint256 public basicPoint10000x = 1850000;
   uint256 public manualTotalRewardAmount;
+  uint256 public latestID = 0;
   
   
 
   mapping(address => UserInfo) public userInfo;
+  address[] public users;
 
   struct UserInfo {
     uint256 depositAmount;
-    uint256 rewardDiv; 
     uint256 nextClaimTime;
+    uint256 rewardDiv;
+    uint256 userID;
+
   }
 
   function changeDev(address _address) public {
     require(msg.sender == dev, "only dev can change Dev");
     dev = _address;
+  }
+  
+  function updateReward(uint256 _airdropAmount) public {
+  require(msg.sender == dev ,"only dev can updateReward");
+  uint arrayLength = users.length;
+  for (uint256 i = 0 ; i < arrayLength;i++)
+  { 
+  UserInfo storage user = userInfo[users[i]];
+  uint256 addAmount = _airdropAmount.mul(user.rewardDiv).div(basicPoint10000x);
+  user.depositAmount = user.depositAmount.add(addAmount);
+  }
+  //all airdropped ARTX is added to user's depositAmount
+  manualTotalRewardAmount = 0;
+  
   }
 
   
@@ -77,6 +95,11 @@ contract SharingPool {
   function deposit( uint256 _amount) public returns (bool){
     // Mannually Approve this address to spend ARTX , then call this function
     UserInfo storage user = userInfo[msg.sender];
+    if (user.depositAmount == 0) {
+    users.push(msg.sender);
+    users.userID = latestID.add(1);
+    latestID = users.userID;
+    }
     ARTXToken artx = ARTXToken(artxAddress);
     user.nextClaimTime = block.timestamp.add(31 days);
     user.depositAmount = user.depositAmount.add(_amount);
@@ -92,40 +115,37 @@ contract SharingPool {
     return manualTotalRewardAmount;
    }
 
-   function adjustmanualTotalRewardAmount(uint256 _amount) public {
-     require(msg.sender == dev, "only dev can adjust reward amount");
-     manualTotalRewardAmount = _amount;
-   }
+ 
      
-  
 
-
-
-
-    function withdraw() public {
+    function withdrawAmount(uint256 _amount) public {
       // Claim before withdraw, or reward will be erased
       UserInfo storage user = userInfo[msg.sender];
       ARTXToken artx = ARTXToken(artxAddress);
-      uint256 withdrawAmount = user.depositAmount;
-      user.depositAmount = 0;
-      user.rewardDiv = 0;
-      totalDepositAmount = totalDepositAmount.sub(withdrawAmount);
-      require(withdrawAmount > 0,"Not enough token to withdraw");
-      artx.transfer(msg.sender, withdrawAmount);
+      user.depositAmount = user.depositAmount.sub(_amount);
+      totalDepositAmount = totalDepositAmount.sub(_amount);
+      require(user.depositAmount >= 0,"Not enough token to withdraw");
+      require(user.nextClaimTime > block.timestamp, "Too early to withdraw,wait 31 days after deposit");
+      user.nextClaimTime = user.nextClaimTime.add(31 days);
+      if (user.depositAmount == 0)
+      {
+      remove(user.userID) 
+      }
+      artx.transfer(msg.sender, _amount);
     }
-
-    function claim() public {
-      // Claim every month before next reward, or your reward would be distributed to all user in next month reward
-      UserInfo storage user = userInfo[msg.sender];
-      ARTXToken artx = ARTXToken(artxAddress);
-      uint256 totalReward = returnTotalReward();
-      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x);
-      require(userClaimAmount >0,"Not enough reward to claim ");
-      require(block.timestamp >= user.nextClaimTime, "claimed already, try 1 month later");
-      user.nextClaimTime = block.timestamp.add(31 days);
-      artx.transfer(msg.sender,userClaimAmount);
-    }
-  }
+    
+     function adjustmanualTotalRewardAmount(uint256 _amount) public {
+     require(msg.sender == dev, "only dev can adjust reward amount");
+     manualTotalRewardAmount = _amount;
+   }
+   
+   function remove(uint256 index) internal {
+   delete array[index];
+   }
+   
+   
+}
+  
 
 
 
