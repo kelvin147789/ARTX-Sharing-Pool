@@ -40,6 +40,7 @@ contract SharingPool {
   }
   
   function updateReward(uint256 _airdropAmount) public {
+  // This need to execute every month when airdrop sent to the contract
   require(msg.sender == dev ,"only dev can updateReward");
   uint arrayLength = users.length;
   for (uint256 i = 0 ; i < arrayLength;i++)
