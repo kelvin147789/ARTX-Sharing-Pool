@@ -120,7 +120,7 @@ contract SharingPool {
    }
 
     function withdrawAmount(uint256 _amount) public {
-      // Claim before withdraw, or reward will be erased
+      // Right now you can claim with this function,or simply withdraw
       UserInfo storage user = userInfo[msg.sender];
       ARTXToken artx = ARTXToken(artxAddress);
       user.depositAmount = user.depositAmount.sub(_amount);
