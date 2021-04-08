@@ -27,4 +27,4 @@ Deploy to mainnet if 10K ARTX is ready to add into the pool , if interested , jo
 
 # TODO:
   - add require timelock check for withdraw when deposit
-  - calculate unclaimed reward as div also ( experimental )
+  - user.depositAmount would be updated when using airdrop function call ( dev call)
