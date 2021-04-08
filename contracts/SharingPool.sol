@@ -50,7 +50,7 @@ contract SharingPool {
   user.depositAmount = user.depositAmount.add(addAmount);
   }
   //all airdropped ARTX is added to user's depositAmount
-  manualTotalRewardAmount = manualTotalRewardAmount.add(_airdropAmount);
+  totalDepositAmount = totalDepositAmount.add(_airdropAmount);
   
   }
 
@@ -112,7 +112,7 @@ contract SharingPool {
 
    function returnTotalReward () public view returns (uint256) {
     //  This will be the remaining unclaimed reward + newReward 
-    return manualTotalRewardAmount;
+    return getARTXBalance(address(this)).sub(totalDepositAmount);
    }
 
  
