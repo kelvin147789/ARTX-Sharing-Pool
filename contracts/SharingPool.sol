@@ -97,8 +97,8 @@ contract SharingPool {
     UserInfo storage user = userInfo[msg.sender];
     if (user.depositAmount == 0) {
     users.push(msg.sender);
-    users.userID = latestID.add(1);
-    latestID = users.userID;
+    user.userID = latestID;
+    latestID = latestID.add(1);
     }
     ARTXToken artx = ARTXToken(artxAddress);
     user.nextClaimTime = block.timestamp.add(31 days);
