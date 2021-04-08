@@ -45,6 +45,7 @@ contract SharingPool {
   for (uint256 i = 0 ; i < arrayLength;i++)
   { 
   UserInfo storage user = userInfo[users[i]];
+  // Would div basicPoint100x when claim / add reward
   uint256 addAmount = _airdropAmount.mul(user.rewardDiv).div(basicPoint10000x);
   user.depositAmount = user.depositAmount.add(addAmount);
   }
@@ -104,7 +105,7 @@ contract SharingPool {
     user.depositAmount = user.depositAmount.add(_amount);
     totalDepositAmount = totalDepositAmount.add(_amount);
     user.rewardDiv = user.depositAmount.mul(basicPoint10000x).div(totalDepositAmount);
-    // Would div basicPoint100x when claim Reward
+    
     artx.transferFrom(msg.sender,address(this),_amount);
     return true;
   }
