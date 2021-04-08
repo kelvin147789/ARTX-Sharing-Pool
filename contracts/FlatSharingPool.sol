@@ -599,8 +599,8 @@ contract SharingPool {
     UserInfo storage user = userInfo[msg.sender];
     if (user.depositAmount == 0) {
     users.push(msg.sender);
-    user.userID = latestID;
-    latestID = latestID.add(1);
+    user.userID = latestID.add(1);
+    latestID = user.userID;
     }
     ARTXToken artx = ARTXToken(artxAddress);
     user.nextClaimTime = block.timestamp.add(31 days);
@@ -637,8 +637,8 @@ contract SharingPool {
       require(user.depositAmount >= 0,"Not enough token to withdraw");
      
       // Add timelock when deploy in mainnet , right now comment out for testing purpose
-      // require(user.nextClaimTime > block.timestamp, "Too early to withdraw,wait 31 days after deposit");
-      // user.nextClaimTime = user.nextClaimTime.add(31 days);
+      require(user.nextClaimTime > block.timestamp, "Too early to withdraw,wait 31 days after deposit or claim");
+      user.nextClaimTime = user.nextClaimTime.add(31 days);
       if (user.depositAmount == 0)
       {
       remove(user.userID);
