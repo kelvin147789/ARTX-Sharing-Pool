@@ -19,7 +19,7 @@ contract SharingPool {
   address public artxAddress;
   uint256 public totalDepositAmount;
   uint256 public basicPoint10000x = 1850000;
-  uint256 public anualTotalRewardAmount;
+  uint256 public manualTotalRewardAmount;
   
   
 
@@ -92,12 +92,12 @@ contract SharingPool {
 
    function returnTotalReward () public view returns (uint256) {
     //  This will be the remaining unclaimed reward + newReward 
-    return anualTotalRewardAmount;
+    return manualTotalRewardAmount;
    }
 
-   function adjustanualTotalRewardAmount(uint256 _amount) public {
+   function adjustmanualTotalRewardAmount(uint256 _amount) public {
      require(msg.sender == dev, "only dev can adjust reward amount");
-     anualTotalRewardAmount = _amount;
+     manualTotalRewardAmount = _amount;
    }
      
   
