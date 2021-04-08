@@ -112,6 +112,10 @@ contract SharingPool {
    function returnTotalReward () public view returns (uint256) {
     return getARTXBalance(address(this)).sub(totalDepositAmount);
    }
+   
+   function remove(uint256 index) internal {
+    delete users[index];
+   }
 
     function withdrawAmount(uint256 _amount) public {
       // Claim before withdraw, or reward will be erased
@@ -129,9 +133,7 @@ contract SharingPool {
       artx.transfer(msg.sender, _amount);
     }
      
-   function remove(uint256 index) internal {
-   delete users[index];
-   }
+   
    
 }
   
