@@ -19,7 +19,6 @@ contract SharingPool {
   address public artxAddress;
   uint256 public totalDepositAmount;
   uint256 public basicPoint10000x = 1850000;
-  uint256 public manualTotalRewardAmount ;
   uint256 public latestID = 0;
   
   
@@ -134,10 +133,7 @@ contract SharingPool {
       artx.transfer(msg.sender, _amount);
     }
     
-     function adjustmanualTotalRewardAmount(uint256 _amount) public {
-     require(msg.sender == dev, "only dev can adjust reward amount");
-     manualTotalRewardAmount = _amount;
-   }
+    
    
    function remove(uint256 index) internal {
    delete users[index];
