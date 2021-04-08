@@ -126,7 +126,13 @@ contract SharingPool {
       user.depositAmount = user.depositAmount.sub(_amount);
       totalDepositAmount = totalDepositAmount.sub(_amount);
       //recalucate the rewardDiv to avoid withdraw user still have the same amount of airdrop amount
-      user.rewardDiv = user.depositAmount.mul(basicPoint10000x).div(totalDepositAmount);
+      if (user.depositAmount > 0)
+      {
+        user.rewardDiv = user.depositAmount.mul(basicPoint10000x).div(totalDepositAmount);
+      }
+      else {
+        user.rewardDiv = 0;
+      }
       require(user.depositAmount >= 0,"Not enough token to withdraw");
      
       // Add timelock when deploy in mainnet , right now comment out for testing purpose
@@ -134,7 +140,7 @@ contract SharingPool {
       // user.nextClaimTime = user.nextClaimTime.add(31 days);
       if (user.depositAmount == 0)
       {
-      remove(user.userID) 
+      remove(user.userID);
       }
       artx.transfer(msg.sender, _amount);
     }

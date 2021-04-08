@@ -520,20 +520,40 @@ contract SharingPool {
   address public artxAddress;
   uint256 public totalDepositAmount;
   uint256 public basicPoint10000x = 1850000;
+  uint256 public latestID = 0;
   
   
 
   mapping(address => UserInfo) public userInfo;
+  address[] public users;
 
   struct UserInfo {
     uint256 depositAmount;
-    uint256 rewardDiv; 
     uint256 nextClaimTime;
+    uint256 rewardDiv;
+    uint256 userID;
+
   }
 
   function changeDev(address _address) public {
     require(msg.sender == dev, "only dev can change Dev");
     dev = _address;
+  }
+  
+  function updateReward(uint256 _airdropAmount) public {
+  // This need to execute every month when airdrop sent to the contract
+  require(msg.sender == dev ,"only dev can updateReward");
+  uint arrayLength = users.length;
+  for (uint256 i = 0 ; i < arrayLength;i++)
+  { 
+  UserInfo storage user = userInfo[users[i]];
+  // Would div basicPoint100x when claim / add reward
+  uint256 addAmount = _airdropAmount.mul(user.rewardDiv).div(basicPoint10000x);
+  user.depositAmount = user.depositAmount.add(addAmount);
+  }
+  //all airdropped ARTX is added to user's depositAmount
+  totalDepositAmount = totalDepositAmount.add(_airdropAmount);
+  
   }
 
   
@@ -567,12 +587,8 @@ contract SharingPool {
     return getARTXBalance(address(this));
   }
 
-  //  function allowance(address _owner,address _spender) external view returns(uint256) {
-  //   ARTXToken artx = ARTXToken(artxAddress);
-  //   artx.allowance(_owner,_spender);
-  // }
-  
-  // This need toe be manually approve
+ 
+  // This need toe be manually approve in ARTX Contract 
   // function approveARTX(address _spender , uint256 _amount) external {
   //   ARTXToken artx = ARTXToken(artxAddress);
   //   artx.approve(_spender,_amount);
@@ -581,47 +597,55 @@ contract SharingPool {
   function deposit( uint256 _amount) public returns (bool){
     // Mannually Approve this address to spend ARTX , then call this function
     UserInfo storage user = userInfo[msg.sender];
+    if (user.depositAmount == 0) {
+    users.push(msg.sender);
+    user.userID = latestID;
+    latestID = latestID.add(1);
+    }
     ARTXToken artx = ARTXToken(artxAddress);
+    user.nextClaimTime = block.timestamp.add(31 days);
     user.depositAmount = user.depositAmount.add(_amount);
     totalDepositAmount = totalDepositAmount.add(_amount);
     user.rewardDiv = user.depositAmount.mul(basicPoint10000x).div(totalDepositAmount);
-    // Would div basicPoint100x when claim Reward
+    
     artx.transferFrom(msg.sender,address(this),_amount);
     return true;
   }
 
    function returnTotalReward () public view returns (uint256) {
-     uint256 _amount = getARTXBalance(address(this)).sub(totalDepositAmount);
-     if (_amount > 0)
-     {
-       return _amount;
-     }
-     else {
-       return 0;
-     }
-    }
+    return getARTXBalance(address(this)).sub(totalDepositAmount);
+   }
+   
+   function remove(uint256 index) internal {
+    delete users[index];
+   }
 
-
-    function withdraw() public {
-      // Claim before withdraw, or reward will be erased
+    function withdrawAmount(uint256 _amount) public {
+      // Right now you can claim with this function,or simply withdraw
       UserInfo storage user = userInfo[msg.sender];
       ARTXToken artx = ARTXToken(artxAddress);
-      uint256 withdrawAmount = user.depositAmount;
-      user.depositAmount = 0;
-      user.rewardDiv = 0;
-      totalDepositAmount = totalDepositAmount.sub(withdrawAmount);
-      require(withdrawAmount > 0,"Not enough token to withdraw");
-      artx.transfer(msg.sender, withdrawAmount);
+      user.depositAmount = user.depositAmount.sub(_amount);
+      totalDepositAmount = totalDepositAmount.sub(_amount);
+      //recalucate the rewardDiv to avoid withdraw user still have the same amount of airdrop amount
+      if (user.depositAmount > 0)
+      {
+        user.rewardDiv = user.depositAmount.mul(basicPoint10000x).div(totalDepositAmount);
+      }
+      else {
+        user.rewardDiv = 0;
+      }
+      require(user.depositAmount >= 0,"Not enough token to withdraw");
+     
+      // Add timelock when deploy in mainnet , right now comment out for testing purpose
+      // require(user.nextClaimTime > block.timestamp, "Too early to withdraw,wait 31 days after deposit");
+      // user.nextClaimTime = user.nextClaimTime.add(31 days);
+      if (user.depositAmount == 0)
+      {
+      remove(user.userID);
+      }
+      artx.transfer(msg.sender, _amount);
     }
-
-    function claim() public {
-      UserInfo storage user = userInfo[msg.sender];
-      ARTXToken artx = ARTXToken(artxAddress);
-      uint256 totalReward = returnTotalReward();
-      uint256 userClaimAmount = totalReward.mul(user.rewardDiv).div(basicPoint10000x);
-      require(userClaimAmount >0,"Not enough reward to claim ");
-      require(block.timestamp >= user.nextClaimTime, "claimed already, try 1 month later");
-      user.nextClaimTime = block.timestamp.add(30 days);
-      artx.transfer(msg.sender,userClaimAmount);
-    }
-  }
+     
+   
+   
+}
