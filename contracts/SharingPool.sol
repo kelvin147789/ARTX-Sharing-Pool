@@ -140,7 +140,7 @@ contract SharingPool {
    }
    
    function remove(uint256 index) internal {
-   delete array[index];
+   delete users[index];
    }
    
    
