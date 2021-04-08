@@ -67,12 +67,8 @@ contract SharingPool {
     return getARTXBalance(address(this));
   }
 
-  //  function allowance(address _owner,address _spender) external view returns(uint256) {
-  //   ARTXToken artx = ARTXToken(artxAddress);
-  //   artx.allowance(_owner,_spender);
-  // }
-  
-  // This need toe be manually approve
+ 
+  // This need toe be manually approve in ARTX Contract 
   // function approveARTX(address _spender , uint256 _amount) external {
   //   ARTXToken artx = ARTXToken(artxAddress);
   //   artx.approve(_spender,_amount);
