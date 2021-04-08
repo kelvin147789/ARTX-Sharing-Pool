@@ -78,6 +78,7 @@ contract SharingPool {
     // Mannually Approve this address to spend ARTX , then call this function
     UserInfo storage user = userInfo[msg.sender];
     ARTXToken artx = ARTXToken(artxAddress);
+    user.nextClaimTime = block.timestamp.add(31 days);
     user.depositAmount = user.depositAmount.add(_amount);
     totalDepositAmount = totalDepositAmount.add(_amount);
     user.rewardDiv = user.depositAmount.mul(basicPoint10000x).div(totalDepositAmount);
