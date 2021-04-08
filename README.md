@@ -25,6 +25,6 @@ Deploy to mainnet if 10K ARTX is ready to add into the pool , if interested , jo
 
 
 
-TODO:
+# TODO:
   - add timelock for withdraw when deposit
   - calculate unclaimed reward as div also ( experimental )
