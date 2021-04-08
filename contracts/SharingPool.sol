@@ -125,6 +125,8 @@ contract SharingPool {
       ARTXToken artx = ARTXToken(artxAddress);
       user.depositAmount = user.depositAmount.sub(_amount);
       totalDepositAmount = totalDepositAmount.sub(_amount);
+      //recalucate the rewardDiv to avoid withdraw user still have the same amount of airdrop amount
+      user.rewardDiv = user.depositAmount.mul(basicPoint10000x).div(totalDepositAmount);
       require(user.depositAmount >= 0,"Not enough token to withdraw");
       require(user.nextClaimTime > block.timestamp, "Too early to withdraw,wait 31 days after deposit");
       user.nextClaimTime = user.nextClaimTime.add(31 days);
