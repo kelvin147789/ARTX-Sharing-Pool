@@ -9,6 +9,8 @@ Deploy to mainnet if 10K ARTX is ready to add into the pool , if interested , jo
 - ARTX Sharing Pool
   > https://ropsten.etherscan.io/address/0x55406003bf84688efc8507ed304eef71b28756a4#writeContract
 
+# Participation:
+- https://docs.google.com/spreadsheets/d/1gf5nSWgKqb9TE2SyDXjxXAofNT8Zk3IaWcT2oqBOiac/edit?usp=sharing
 
 
 # Step
