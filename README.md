@@ -23,7 +23,6 @@ PS:
     
   ARTX Sharing Pool
   - Deposit
-  - Claim 
   - Withdraw
 
 
