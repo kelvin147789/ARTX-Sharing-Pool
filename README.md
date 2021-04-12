@@ -5,12 +5,16 @@ Deploy to mainnet if 10K ARTX is ready to add into the pool , if interested , jo
 
 # Ropsten:
 - MOCK ARTX
-  > https://ropsten.etherscan.io/address/0x0694449b1e243230e602e7e107479cbdbec9038f#writeContract
+  > https://ropsten.etherscan.io/address/0xc01cfe5631cf4b47d7d2da7444d9aabb578aa826#writeContract
 - ARTX Sharing Pool
-  > https://ropsten.etherscan.io/address/0x55406003bf84688efc8507ed304eef71b28756a4#writeContract
+  > https://ropsten.etherscan.io/address/0x0f22e9c5d6139296561e056f0bd8b8ff71a0de1b#writeContract
+ 
 
 # Participation:
 - https://docs.google.com/spreadsheets/d/1gf5nSWgKqb9TE2SyDXjxXAofNT8Zk3IaWcT2oqBOiac/edit?usp=sharing
+
+PS:
+- If deploy to mainnet, WITHDRAW function would be add 31 days timelock when DEPOSIT
 
 
 # Step
