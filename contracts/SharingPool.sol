@@ -136,9 +136,11 @@ contract SharingPool {
       require(user.depositAmount >= 0,"Not enough token to withdraw");
      
       // Add timelock when deploy in mainnet , right now comment out for testing purpose
-      // !!! PLEASE UNCOMMENT BELOW CODE BEFORE DEPLOY TO MAINNET  
+      !!! PLEASE UNCOMMENT BELOW CODE BEFORE DEPLOY TO MAINNET  
       require(user.nextClaimTime > block.timestamp, "Too early to withdraw,wait 31 days after deposit or claim");
       user.nextClaimTime = user.nextClaimTime.add(31 days);
+
+      // this cause error , so remove it in current stage , doesn't affect the system
       // if (user.depositAmount == 0)
       // {
       // remove(user.userID);
